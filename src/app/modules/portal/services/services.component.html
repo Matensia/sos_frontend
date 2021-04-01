@@ -1,0 +1,34 @@
+<mat-grid-list cols="2" rows="1">
+    <mat-grid-tile colspan="1">
+      <mat-card class="service-style">
+        <h6>Servicios disponibles: </h6>
+      <mat-form-field appearance="fill">
+        <mat-label>Ingrese servicio</mat-label>
+        <mat-select [(ngModel)]="selectedValue" name="service">
+          <mat-option *ngFor="let serv of servicios; let i = index" [value]="serv.id">
+            {{serv.nombre}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+        <h6>Datos para el servicio: </h6>
+        <input type="file" multiple>
+        <br>
+        <br>
+        <mat-form-field appearance="fill">
+          <mat-label>Mensaje</mat-label>
+          <textarea matInput [(ngModel)]="textArea" rows="8"></textarea>
+        </mat-form-field>
+        <br>
+        <button mat-flat-button color="primary" (click)="solicitar()" >Solicitar asistencia</button>
+      </mat-card>
+    </mat-grid-tile>
+    <mat-grid-tile colspan="1">
+      <mat-card>
+        <google-map height= "800" width= "800" [center]="position">
+            <map-marker
+            [position]="position">
+            </map-marker>
+        </google-map>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>

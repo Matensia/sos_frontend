@@ -1,0 +1,25 @@
+<mat-card-title style="text-align:center;">
+    Ingrese el codigo de verificación enviado a su casilla de email
+</mat-card-title>
+
+<h5>Ingrese código</h5>
+<form [formGroup]="formVerifySign" (ngSubmit)="verificar($event)" novalidate>
+<mat-form-field>
+    <input
+    matInput
+    placeholder="Codigo"
+    required
+    minlength="6"
+    name="codigoSign"
+    formControlName="codigoSg">
+  <mat-icon matSuffix>lock</mat-icon>
+</mat-form-field>
+<br><br>
+<button
+    mat-raised-button
+    color="primary"
+    class="login-button">
+    Validar código
+</button>
+</form>
+
