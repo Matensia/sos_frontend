@@ -9,6 +9,8 @@ import { INews } from 'src/app/core/api/models/i-new';
   styleUrls: ['./news.component.css']
 })
 export class NewsComponent implements OnInit {
+
+
   showFiller = false;
   tipo_noticia_principal
   tipo_noticia_secundaria
@@ -24,6 +26,7 @@ export class NewsComponent implements OnInit {
     ) { }
 
   ngOnInit() {
+    
     this._service.news().then((news: INews[]) => {
 
      this.tipo_noticia_principal = news[3].tipo

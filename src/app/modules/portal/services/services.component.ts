@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { PortalResourceService } from 'src/app/core/api/services/portal-resource.service';
 import { IService } from 'src/app/core/api/models/i-service';
+import { Observable, Subject } from 'rxjs';
+import { IAsistenciaRequest } from 'src/app/core/api/models/i-asistencia-req';
+import { IAsistencia } from 'src/app/core/api/models/i-asistencia';
 
 @Component({
   selector: 'app-services',
@@ -9,9 +12,11 @@ import { IService } from 'src/app/core/api/models/i-service';
 })
 
 export class ServicesComponent implements OnInit {
+
   private _servicios: IService[];
   selectedValue: string;
   textArea: string;
+  asistencia: IAsistencia;
 
   private _latitud: Number = -31.3389031;
   private _longitud: Number = -64.2575066;
@@ -46,7 +51,7 @@ export class ServicesComponent implements OnInit {
   }
 
   ngOnInit() {
-    
+
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(success, error)
     } else {
@@ -72,7 +77,17 @@ export class ServicesComponent implements OnInit {
       alert("Debe ingresar un servicio")
       return
     }
-    alert(this.selectedValue)
-    alert(this.textArea)
+
+    let reqAsistencia: IAsistenciaRequest = <IAsistenciaRequest> {
+      dni: parseInt(sessionStorage.getItem('dni')),
+      idServicio: this.selectedValue,
+      dato: this.textArea
+    };
+
+    this._service.asistencia(reqAsistencia).then((asistenciaResp: IAsistencia) => {
+      this.asistencia = asistenciaResp
+    });
+
+    
   }
 }

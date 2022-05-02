@@ -19,7 +19,8 @@ export class PortalComponent implements OnInit {
   fillerNav = [
     {name:"home",route:"news",icon:"home"},
     {name:"servicios",route:"services",icon:"call"},
-    {name:"historico",route:"historical",icon:"sd_storage"}
+    {name:"historico",route:"historical",icon:"sd_storage"},
+    {name:"messages",route:"message",icon:"question_answer"}
   ] 
   private _mobileQueryListener: () => void;
 

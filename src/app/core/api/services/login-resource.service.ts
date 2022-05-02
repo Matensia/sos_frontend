@@ -28,7 +28,7 @@ export class LoginResourceService extends Resource {
   login: IResourceMethod<ILogin, ILogin>
 
   @ResourceAction({
-    path: '/login/user',
+    path: '/login/new',
     method: ResourceRequestMethod.Post,
     requestBodyType: ResourceRequestBodyType.JSON,
     responseBodyType: ResourceResponseBodyType.Json

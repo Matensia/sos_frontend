@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IAsistencia } from 'src/app/core/api/models/i-asistencia';
-import { ILogin } from 'src/app/core/api/models/i-login';
+import { IAsistenciaRequest } from 'src/app/core/api/models/i-asistencia-req';
 import { PortalResourceService } from 'src/app/core/api/services/portal-resource.service';
 
 export interface PeriodicElement {
@@ -27,7 +27,7 @@ export class HistoricalComponent implements OnInit {
   ngOnInit() {
 
 
-    let reqHistorical: ILogin = <ILogin> {
+    let reqHistorical: IAsistenciaRequest = <IAsistenciaRequest> {
       dni: parseInt(sessionStorage.getItem('dni')),
     };
 
@@ -35,5 +35,4 @@ export class HistoricalComponent implements OnInit {
       this.asistencias = asistencias
     });
   }
-
 }

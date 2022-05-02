@@ -7,6 +7,6 @@ export interface ISign {
     telefono: bigint;
     pais: string;
     email: string;
-    password: string;
+    pass: string;
     repass : string;
   }

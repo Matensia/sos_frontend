@@ -67,7 +67,7 @@ export class LoginComponent implements OnInit {
 
     let reqLogin: ILogin = <ILogin> {
       email: this.formLogin.get('email').value, 
-      password: this.formLogin.get('pass').value,
+      pass: this.formLogin.get('pass').value,
     };
 
     this._service.login(reqLogin).then((login: ILogin) => {
@@ -81,7 +81,7 @@ export class LoginComponent implements OnInit {
     event.preventDefault();
     let reqSign: ISign = <ISign> {
       email: this.formSign.get('emailSg').value, 
-      password: this.formSign.get('passSg').value,
+      pass: this.formSign.get('passSg').value,
       repass: this.formSign.get('rePassSg').value,
       nombre: this.formSign.get('nombreSg').value,
       apellido: this.formSign.get('apellidoSg').value,

@@ -32,6 +32,7 @@ import {
 import { PortalComponent } from './portal/portal/portal.component';
 import { ServicesComponent } from './portal/services/services.component';
 import { HistoricalComponent } from './portal/historical/historical.component';
+import { MessagesComponent } from './portal/messages/messages.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { HistoricalComponent } from './portal/historical/historical.component';
     NewsComponent,
     PortalComponent,
     ServicesComponent,
-    HistoricalComponent
+    HistoricalComponent,
+    MessagesComponent,
   ],
   entryComponents: [DialogSignComponent],
   imports: [
@@ -66,7 +68,7 @@ import { HistoricalComponent } from './portal/historical/historical.component';
     GoogleMapsModule,
     MatGridListModule,
     MatSelectModule,
-    MatTableModule
+    MatTableModule,
   ],
   exports: [
     CommonModule,
@@ -88,7 +90,7 @@ import { HistoricalComponent } from './portal/historical/historical.component';
     MatListModule,
     MatGridListModule,
     MatSelectModule,
-    MatTableModule
+    MatTableModule,
   ]
 })
 export class ModulesModule { }

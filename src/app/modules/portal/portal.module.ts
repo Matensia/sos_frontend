@@ -12,11 +12,12 @@ import { ServicesComponent } from './services/services.component';
 import {MatGridListModule} from '@angular/material/grid-list';
 import { HistoricalComponent } from './historical/historical.component';
 import {MatTableModule} from '@angular/material/table';
+import { MessagesComponent } from './messages/messages.component';
 
 
 
 @NgModule({
-  declarations: [NewsComponent, PortalComponent, ServicesComponent, ServicesComponent, HistoricalComponent],
+  declarations: [NewsComponent, PortalComponent, ServicesComponent, ServicesComponent, HistoricalComponent, MessagesComponent],
   imports: [
     CommonModule,
     LayoutModule,

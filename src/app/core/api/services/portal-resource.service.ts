@@ -6,6 +6,7 @@ import { ResourceHandler, ResourceAction, ResourceParams, Resource,
 import { IService } from '../models/i-service';
 import { ILogin } from '../models/i-login';
 import { IAsistencia } from '../models/i-asistencia';
+import { IAsistenciaRequest } from '../models/i-asistencia-req';
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +21,7 @@ export class PortalResourceService extends Resource{
     super(requestHandler); 
   }
   @ResourceAction({
-    path: '/portal/services',
+    path: '/service',
     method: ResourceRequestMethod.Get,
     requestBodyType: ResourceRequestBodyType.JSON,
     responseBodyType: ResourceResponseBodyType.Json
@@ -28,11 +29,19 @@ export class PortalResourceService extends Resource{
   services: IResourceMethod<void, IService[]>
 
   @ResourceAction({
-    path: '/asistencias/historico',
+    path: '/attendance/history',
     method: ResourceRequestMethod.Post,
     requestBodyType: ResourceRequestBodyType.JSON,
     responseBodyType: ResourceResponseBodyType.Json
   })
   asistencias: IResourceMethod<ILogin, IAsistencia[]>
+
+  @ResourceAction({
+    path: '/attendance',
+    method: ResourceRequestMethod.Put,
+    requestBodyType: ResourceRequestBodyType.JSON,
+    responseBodyType: ResourceResponseBodyType.Json
+  })
+  asistencia: IResourceMethod<IAsistencia, IAsistenciaRequest>
 
 }
