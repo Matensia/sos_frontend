@@ -7,6 +7,8 @@ import { IService } from '../models/i-service';
 import { ILogin } from '../models/i-login';
 import { IAsistencia } from '../models/i-asistencia';
 import { IAsistenciaRequest } from '../models/i-asistencia-req';
+import { IChat } from '../models/i-chat';
+import { IChatReq } from '../models/i-chat-req';
 
 @Injectable({
   providedIn: 'root'
@@ -38,10 +40,33 @@ export class PortalResourceService extends Resource{
 
   @ResourceAction({
     path: '/attendance',
-    method: ResourceRequestMethod.Put,
+    method: ResourceRequestMethod.Post,
     requestBodyType: ResourceRequestBodyType.JSON,
     responseBodyType: ResourceResponseBodyType.Json
   })
   asistencia: IResourceMethod<IAsistencia, IAsistenciaRequest>
 
+  @ResourceAction({
+    path: '/attendance/chats',
+    method: ResourceRequestMethod.Post,
+    requestBodyType: ResourceRequestBodyType.JSON,
+    responseBodyType: ResourceResponseBodyType.Json
+  })
+  chats: IResourceMethod<IChatReq, IChat[]>
+
+  @ResourceAction({
+    path: '/attendance/chats',
+    method: ResourceRequestMethod.Put,
+    requestBodyType: ResourceRequestBodyType.JSON,
+    responseBodyType: ResourceResponseBodyType.Json
+  })
+  chat: IResourceMethod<IChat, IChat>
+
+  @ResourceAction({
+    path: '/attendance',
+    method: ResourceRequestMethod.Delete,
+    requestBodyType: ResourceRequestBodyType.JSON,
+    responseBodyType: ResourceResponseBodyType.Json
+  })
+  delete: IResourceMethod<IAsistencia, ILogin>
 }

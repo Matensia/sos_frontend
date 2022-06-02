@@ -9,6 +9,7 @@ import { MainComponent } from './main/main.component';
 import { LoginComponent } from '../modules/auth/login/login.component';
 import { ReactiveFormsModule } from "@angular/forms";
 import { DialogSignComponent } from './auth/dialog-sign/dialog-sign.component';
+import { DialogInactiveComponent } from './auth/dialog-inactive/dialog-inactive.component';
 import { NewsComponent } from './portal/news/news.component';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatSidenavModule} from '@angular/material/sidenav';
@@ -39,13 +40,14 @@ import { MessagesComponent } from './portal/messages/messages.component';
     MainComponent,
     LoginComponent,
     DialogSignComponent,
+    DialogInactiveComponent,
     NewsComponent,
     PortalComponent,
     ServicesComponent,
     HistoricalComponent,
     MessagesComponent,
   ],
-  entryComponents: [DialogSignComponent],
+  entryComponents: [DialogSignComponent, DialogInactiveComponent],
   imports: [
     CommonModule,
     RouterModule,

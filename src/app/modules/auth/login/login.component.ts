@@ -6,6 +6,7 @@ import { LoginResourceService } from 'src/app/core/api/services/login-resource.s
 import { Router } from '@angular/router';
 import {MatDialog} from '@angular/material/dialog';
 import { DialogSignComponent } from '../dialog-sign/dialog-sign.component';
+import { DialogInactiveComponent } from '../dialog-inactive/dialog-inactive.component';
 
 @Component({
   selector: 'app-login',
@@ -37,7 +38,7 @@ export class LoginComponent implements OnInit {
   constructor(private formBuilder : FormBuilder,
      private _service: LoginResourceService, 
      private router: Router, 
-     public dialog: MatDialog,) { 
+     public dialog: MatDialog) { 
     this.buildForm();
   }
   ngOnInit() {
@@ -45,20 +46,20 @@ export class LoginComponent implements OnInit {
 
   private buildForm() {
     this.formLogin = this.formBuilder.group({
-      'email': new FormControl('',[Validators.email]),
-      'pass': new FormControl('',[Validators.required])
+      'email': new FormControl('',[]),
+      'pass': new FormControl('',[])
     });
     this.formSign = this.formBuilder.group({
-      'emailSg': new FormControl('',[Validators.email]),
-      'passSg': new FormControl('',[Validators.required]),
-      'rePassSg': new FormControl('',[Validators.required]),
-      'nombreSg': new FormControl('',[Validators.required]),
-      'apellidoSg': new FormControl('',[Validators.required]),
-      'paisSg': new FormControl('',[Validators.required]),
-      'direccionSg': new FormControl('',[Validators.required]),
-      'dniSg': new FormControl('',[Validators.required]),
-      'cuilSg': new FormControl('',[Validators.required]),
-      'telefonoSg': new FormControl('',[Validators.required]),
+      'emailSg': new FormControl('',[]),
+      'passSg': new FormControl('',[]),
+      'rePassSg': new FormControl('',[]),
+      'nombreSg': new FormControl('',[]),
+      'apellidoSg': new FormControl('',[]),
+      'paisSg': new FormControl('',[]),
+      'direccionSg': new FormControl('',[]),
+      'dniSg': new FormControl('',[]),
+      'cuilSg': new FormControl('',[]),
+      'telefonoSg': new FormControl('',[]),
     });
   }
 
@@ -73,6 +74,15 @@ export class LoginComponent implements OnInit {
     this._service.login(reqLogin).then((login: ILogin) => {
       sessionStorage.setItem('email',reqLogin.email)
       sessionStorage.setItem('dni', login.dni.toString())
+
+      if (login.habilitado == 'N') {
+        this.dialog.open(DialogInactiveComponent).disableClose = true;
+        this.router.navigate(['/login']);
+
+        return
+      }
+
+      
       this.router.navigate(['/portal/news']);
     });
   }
@@ -93,6 +103,7 @@ export class LoginComponent implements OnInit {
     };
 
     this._service.sign(reqSign).then((sign: ISign) => {
+      alert("Usuario creado correctamente")
       this.router.navigate(['/login']);
       console.log("VALIDAR QUE PASA EN CASO DE ERROR")
       console.log(sign)

@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { PortalResourceService } from 'src/app/core/api/services/portal-resource.service';
 import { IService } from 'src/app/core/api/models/i-service';
-import { Observable, Subject } from 'rxjs';
 import { IAsistenciaRequest } from 'src/app/core/api/models/i-asistencia-req';
 import { IAsistencia } from 'src/app/core/api/models/i-asistencia';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-services',
@@ -47,7 +47,7 @@ export class ServicesComponent implements OnInit {
     this._longitud = value;
   }
 
-  constructor(private _service: PortalResourceService) {
+  constructor(private _service: PortalResourceService, private router: Router) {
   }
 
   ngOnInit() {
@@ -85,9 +85,10 @@ export class ServicesComponent implements OnInit {
     };
 
     this._service.asistencia(reqAsistencia).then((asistenciaResp: IAsistencia) => {
+      
       this.asistencia = asistenciaResp
-    });
 
-    
+      this.router.navigate(['/portal/message']);
+    });
   }
 }

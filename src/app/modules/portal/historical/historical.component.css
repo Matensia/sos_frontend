@@ -1,15 +1,21 @@
 table {
-    width: 60%;
+  margin: 3%;
+  width: 95%;
 }
 
 .historical-style {
-  width: 60%;
-  margin-left: 20%;
+  width: 80%;
+  margin-left: 10%;
 }
+
 h3 { 
   text-align: center;
 }
 
 th,td {
   padding-right:40px
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
 }
