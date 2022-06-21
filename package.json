@@ -1,5 +1,5 @@
 {
-  "name": "proj-base",
+  "name": "sos",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -15,6 +15,7 @@
   },
   "private": true,
   "dependencies": {
+    "@agm/core": "^1.1.0",
     "@angular/animations": "~8.2.7",
     "@angular/cdk": "^8.2.3",
     "@angular/common": "~8.2.7",
@@ -28,8 +29,11 @@
     "@angular/router": "~8.2.7",
     "@material/tab-bar": "^14.0.0",
     "@ng-bootstrap/ng-bootstrap": "^5.1.2",
+    "@ngmodule/material-carousel": "^0.6.0",
     "@ngx-resource/core": "^5.4.4",
     "@ngx-resource/handler-ngx-http": "^6.0.2",
+    "@ngx-translate/core": "^8.0.0",
+    "@ngx-translate/http-loader": "^7.0.0",
     "angular-in-memory-web-api": "^0.9.0",
     "bootstrap": "^4.3.1",
     "hammerjs": "^2.0.8",
@@ -48,7 +52,7 @@
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "~8.9.4",
     "codelyzer": "^5.0.0",
-    "concurrently": "^4.0.1",
+    "concurrently": "^4.1.2",
     "jasmine-core": "~3.4.0",
     "jasmine-spec-reporter": "~4.2.1",
     "karma": "~4.1.0",

@@ -3,13 +3,14 @@
       <mat-card-title style="text-align:center;">SOS APP</mat-card-title>
       
       <mat-tab-group mat-stretch-tabs class="example-stretched-tabs">
-        <mat-tab label="Iniciar sessión">
+        <mat-tab i18n-label label="Iniciar sessión">
             <mat-card-content>
               <form [formGroup]="formLogin" (ngSubmit)="login($event)" novalidate>
                 <mat-form-field>
                   <input
                     matInput
                     placeholder="Email"
+                    i18n-placeholder
                     name="email"
                     formControlName="email">
                   <mat-icon matSuffix>email</mat-icon>
@@ -17,7 +18,8 @@
                 <mat-form-field>
                   <input
                     matInput
-                    placeholder="Password"
+                    placeholder="Clave"
+                    i18n-placeholder
                     type="password"
                     minlength="6"
                     name="password"
@@ -28,18 +30,19 @@
                   mat-raised-button
                   color="primary"
                   class="login-button">
-                  Iniciar sessión
+                  <span i18n>Iniciar sessión</span>
                 </button>
               </form>
             </mat-card-content>
         </mat-tab>
-        <mat-tab label="Crear cuenta">
+        <mat-tab i18n-label label="Crear cuenta">
           <mat-card-content>
             <form [formGroup]="formSign" (ngSubmit)="sign($event)" novalidate>
               <mat-form-field>
                 <input
                   matInput
                   placeholder="Email"
+                  i18n-placeholder
                   name="email"
                   formControlName="emailSg">
                 <mat-icon matSuffix>email</mat-icon>
@@ -47,7 +50,8 @@
               <mat-form-field>
                 <input
                   matInput
-                  placeholder="Password"
+                  placeholder="Clave"
+                  i18n-placeholder
                   type="password"
                   minlength="6"
                   name="password"
@@ -58,7 +62,8 @@
               <mat-form-field>
                   <input
                   matInput
-                  placeholder="Password"
+                  placeholder="Clave"
+                  i18n-placeholder
                   type="password"
                   minlength="6"
                   name="repassword"
@@ -69,7 +74,7 @@
                 <input
                 matInput
                 placeholder="Nombre"
-                minlength="6"
+                i18n-placeholder
                 name="nombre"
                 formControlName="nombreSg">
               <mat-icon matSuffix>account_circle</mat-icon>
@@ -78,7 +83,7 @@
               <input
               matInput
               placeholder="Apeliido"
-              minlength="6"
+              i18n-placeholder
               name="apellido"
               formControlName="apellidoSg">
             <mat-icon matSuffix>account_circle</mat-icon>
@@ -87,7 +92,7 @@
             <input
             matInput
             placeholder="Pais"
-            minlength="6"
+            i18n-placeholder
             name="pais"
             formControlName="paisSg">
           <mat-icon matSuffix>flag</mat-icon>
@@ -96,7 +101,7 @@
           <input
           matInput
           placeholder="Direccion"
-          minlength="6"
+          i18n-placeholder
           name="direccion"
           formControlName="direccionSg">
         <mat-icon matSuffix>home</mat-icon>
@@ -105,7 +110,7 @@
         <input
         matInput
         placeholder="Dni"
-        minlength="6"
+        i18n-placeholder
         name="dni"
         formControlName="dniSg">
       <mat-icon matSuffix>fingerprint</mat-icon>
@@ -114,7 +119,7 @@
         <input
         matInput
         placeholder="Cuil"
-        minlength="6"
+        i18n-placeholder
         name="cuil"
         formControlName="cuilSg">
       <mat-icon matSuffix>fingerprint</mat-icon>
@@ -123,7 +128,7 @@
         <input
         matInput
         placeholder="Telefono"
-        minlength="6"
+        i18n-placeholder
         name="telefono"
         formControlName="telefonoSg">
       <mat-icon matSuffix>settings_phone</mat-icon>
@@ -132,9 +137,16 @@
                 mat-raised-button
                 color="primary"
                 class="login-button">
-                Crear cuenta
+                <span i18n>Crear cuenta</span>
               </button>
             </form>
+            <button
+                (click)="openValidateCode()"
+                mat-raised-button
+                color="primary"
+                class="login-button">
+                <span i18n>Validar código</span>
+              </button>
           </mat-card-content>
         </mat-tab>
       </mat-tab-group>

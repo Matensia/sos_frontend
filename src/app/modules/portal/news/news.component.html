@@ -1,28 +1,83 @@
+<div [style.height]="auto">
+  <mat-carousel
+    timings="600ms ease-in"
+    [autoplay]="true"
+    interval="4000"
+    color="primary"
+    maxWidth="auto"
+    proportion="3"
+    slides="4"
+    [loop]="true"
+    [hideArrows]="false"
+    [hideIndicators]="true"
+    [useKeyboard]="true"
+    [useMouseWheel]="false"
+    orientation="ltr"
+  >
+    <mat-carousel-slide #matCarouselSlide [hideOverlay]="false">
+      <div
+        style="
+          width: 100%;
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+        "
+      >
+        <h3 class="news-text">{{ mensaje_noticia_principal }}</h3>
+      </div>
+    </mat-carousel-slide>
 
-<mat-drawer-container class="news-container">
-<mat-card class="title-card">
-  <mat-card-title>Bienvenido a SOS</mat-card-title>
-      El sistema SOS te perimite realizar solicitides a servicios de asistencias.<br>
-      Se puede consultar el historico de asistencias.<br>
-      Se puede realizar un pedido de asistencia seleccionando Policia, Urgencias, Bomberos o Defensa Civil.<br>
-      Se puede realizar un seguimiento de la asistencia mediante un chat individual ante cada asistencia solicitada.
-  </mat-card>
-  <mat-card class="title-card-news">
-    <mat-card-title>{{tipo_noticia_principal}}</mat-card-title>
-    {{mensaje_noticia_principal}}
-  </mat-card>
+    <mat-carousel-slide #matCarouselSlide [hideOverlay]="false">
+      <div
+        style="
+          width: 100%;
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+        "
+      >
+        <h3 class="news-text">{{ mensaje_noticia_secundaria }}</h3>
+      </div>
+    </mat-carousel-slide>
 
-  <mat-card class="title-card-news">
-    <mat-card-title>{{tipo_noticia_secundaria}}</mat-card-title>
-    {{mensaje_noticia_secundaria}}
-  </mat-card>
-  <mat-card class="title-card-news">
-    <mat-card-title>{{tipo_aviso_principal}}</mat-card-title>
-    {{mensaje_aviso_principal}}
-  </mat-card>
+    <mat-carousel-slide #matCarouselSlide [hideOverlay]="false">
+      <div
+        style="
+          width: 100%;
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+        "
+      >
+        <h3 class="news-text">{{ mensaje_aviso_principal }}</h3>
+      </div>
+    </mat-carousel-slide>
 
-  <mat-card class="title-card-news">
-    <mat-card-title>{{tipo_aviso_secundario}}</mat-card-title>
-    {{mensaje_aviso_secundario}}
-  </mat-card>
-</mat-drawer-container>
+    <mat-carousel-slide #matCarouselSlide [hideOverlay]="false">
+      <div
+        style="
+          width: 100%;
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+        "
+      >
+        <h3 class="news-text">{{ mensaje_aviso_secundario }}</h3>
+      </div>
+    </mat-carousel-slide>
+  </mat-carousel>
+
+  <app-services></app-services>
+
+  <div class="chat-button-container">
+    <app-messages></app-messages>
+  </div>
+</div>

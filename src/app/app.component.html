@@ -1,2 +1,11 @@
+<div
+  class="app-splash-screen"
+  *ngIf="showSplash"
+  [ngStyle]="{ left: windowWidth }"
+>
+  <div class="div-logo">
+    <img id="icon" class="logo" src="../assets/logo.png" alt="" />
+  </div>
+</div>
 <app-loader></app-loader>
 <router-outlet></router-outlet>

@@ -1,18 +1,18 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { PortalResourceService } from 'src/app/core/api/services/portal-resource.service';
-import { IService } from 'src/app/core/api/models/i-service';
-import { IAsistenciaRequest } from 'src/app/core/api/models/i-asistencia-req';
-import { IAsistencia } from 'src/app/core/api/models/i-asistencia';
-import { Router } from '@angular/router';
+import { Component, OnInit } from "@angular/core";
+import { PortalResourceService } from "src/app/core/api/services/portal-resource.service";
+import { IService } from "src/app/core/api/models/i-service";
+import { IAsistenciaRequest } from "src/app/core/api/models/i-asistencia-req";
+import { IAsistencia } from "src/app/core/api/models/i-asistencia";
+import { Router } from "@angular/router";
+import { MatSnackBar } from "@angular/material/snack-bar";
+import { AgmCoreModule } from "@agm/core";
 
 @Component({
-  selector: 'app-services',
-  templateUrl: './services.component.html',
-  styleUrls: ['./services.component.css']
+  selector: "app-services",
+  templateUrl: "./services.component.html",
+  styleUrls: ["./services.component.css"],
 })
-
 export class ServicesComponent implements OnInit {
-
   private _servicios: IService[];
   selectedValue: string;
   textArea: string;
@@ -24,7 +24,7 @@ export class ServicesComponent implements OnInit {
   position = {
     lat: this.latitud,
     lng: this.longitud,
-  }
+  };
 
   public get servicios(): IService[] {
     return this._servicios;
@@ -47,48 +47,60 @@ export class ServicesComponent implements OnInit {
     this._longitud = value;
   }
 
-  constructor(private _service: PortalResourceService, private router: Router) {
-  }
+  constructor(
+    private _service: PortalResourceService,
+    private router: Router,
+    private _snackBar: MatSnackBar
+  ) {}
 
   ngOnInit() {
+    this._service.services().then((servicios: IService[]) => {
+      this._servicios = servicios;
+    });
+    this.getLocation();
+  }
 
+  public async getLocation() {
     if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(success, error)
+      navigator.geolocation.getCurrentPosition(success, error);
     } else {
-      alert("Navegador no soporta ubicacion")
+      alert("Navegador no soporta ubicacion");
     }
-    navigator.geolocation.getCurrentPosition(success, error)
+    navigator.geolocation.getCurrentPosition(success, error);
 
     function success(geolocationPosition) {
       console.log(geolocationPosition.coords.longitude);
       console.log(geolocationPosition.coords.latitude);
     }
-    function error() {
-      alert("Error al obtener ubicacion")
-    }
-
-    this._service.services().then((servicios: IService[]) => {
-      this._servicios = servicios;
-    });
+    function error() {}
   }
 
-  public solicitar(event: Event) {
+  public solicitar() {
     if (this.selectedValue == undefined) {
-      alert("Debe ingresar un servicio")
-      return
+      this._snackBar.open("Debe ingresar un servicio", "", {
+        duration: 3000,
+        panelClass: ["alert-red"],
+      });
+      return;
     }
 
-    let reqAsistencia: IAsistenciaRequest = <IAsistenciaRequest> {
-      dni: parseInt(sessionStorage.getItem('dni')),
+    let reqAsistencia: IAsistenciaRequest = <IAsistenciaRequest>{
+      dni: parseInt(sessionStorage.getItem("dni")),
       idServicio: this.selectedValue,
-      dato: this.textArea
+      dato: this.textArea,
     };
 
-    this._service.asistencia(reqAsistencia).then((asistenciaResp: IAsistencia) => {
-      
-      this.asistencia = asistenciaResp
+    this._service
+      .asistencia(reqAsistencia)
+      .then((asistenciaResp: IAsistencia) => {
+        this.asistencia = asistenciaResp;
 
-      this.router.navigate(['/portal/message']);
-    });
+        this._snackBar.open("Asistencia solicitada", "", {
+          duration: 3000,
+          panelClass: ["alert-green"],
+        });
+
+        this.ngOnInit();
+      });
   }
 }
