@@ -1,0 +1,44 @@
+<mat-card class="content">
+  <div class="service-info">
+    <h6 i18n>Servicios disponibles:</h6>
+    <mat-form-field class="form" appearance="fill">
+      <mat-label i18n>Ingrese servicio</mat-label>
+      <mat-select class="services" [(ngModel)]="selectedValue" name="service">
+        <ng-container *ngFor="let serv of servicios; let i = index">
+          <mat-option [value]="serv.id" *ngIf="serv.habilitado == 'N'" disabled>
+            {{ serv.nombre }}
+            <span i18n class="service-off"
+              ><mat-icon>error</mat-icon>servicio inabilitado por el
+              momento</span
+            >
+          </mat-option>
+          <mat-option [value]="serv.id" *ngIf="serv.habilitado == 'S'">
+            {{ serv.nombre }}
+          </mat-option>
+        </ng-container>
+      </mat-select>
+    </mat-form-field>
+    <h6 i18n>Datos para el servicio:</h6>
+    <input class="file" type="file" multiple />
+    <br />
+    <br />
+    <mat-form-field class="mensaje" appearance="fill">
+      <mat-label i18n>Mensaje</mat-label>
+      <textarea matInput [(ngModel)]="textArea" rows="8"></textarea>
+    </mat-form-field>
+    <br />
+    <button
+      class="button"
+      mat-flat-button
+      color="primary"
+      (click)="solicitar()"
+    >
+      <span i18n>Solicitar asistencia</span>
+    </button>
+  </div>
+  <div class="map">
+    <google-map [center]="position">
+      <map-marker [position]="position"> </map-marker>
+    </google-map>
+  </div>
+</mat-card>

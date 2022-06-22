@@ -1,0 +1,35 @@
+<br />
+<br />
+<h3 i18n>Histórico de asistencias:</h3>
+<br />
+<mat-card class="historical-style">
+  <table>
+    <tr>
+      <th i18n>ID</th>
+      <th i18n>ID_SERVICIO</th>
+      <th i18n>ESTADO</th>
+      <th i18n>FECHA_CREACION</th>
+      <th i18n>FECHA_CANCELACION</th>
+      <th i18n>MOTIVO_CANCELACION</th>
+      <th i18n>VER CHAT</th>
+    </tr>
+    <br />
+    <tr *ngFor="let asistencia of asistencias">
+      <td>{{ asistencia.id }}</td>
+      <td>{{ asistencia.idServicio }}</td>
+      <td>{{ asistencia.estado }}</td>
+      <td>{{ asistencia.fechaCreacion }}</td>
+      <td>{{ asistencia.fechaCancelacion }}</td>
+      <td>{{ asistencia.motivoCancelacion }}</td>
+      <td>
+        <button
+          class="button-detail"
+          mat-icon-button
+          (click)="detail(asistencia.id)"
+        >
+          <mat-icon>search</mat-icon>
+        </button>
+      </td>
+    </tr>
+  </table>
+</mat-card>

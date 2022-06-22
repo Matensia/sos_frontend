@@ -1,0 +1,12 @@
+<!-- <div
+  class="example-container"
+  [class.example-is-mobile]="mobileQuery.matches"
+  *ngIf="shouldRun"
+>
+</div> -->
+<app-toolbar></app-toolbar>
+<app-news></app-news>
+<app-services (attendanceAdded)="messages.updateAttendences()"></app-services>
+<div class="chat-button-container">
+  <app-messages #messages></app-messages>
+</div>

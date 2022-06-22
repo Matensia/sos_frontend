@@ -1,0 +1,44 @@
+.form {
+  width: 100%;
+}
+
+.button,
+.mensaje,
+.services {
+  width: 100%;
+}
+
+button {
+  outline: none;
+}
+
+.service-off {
+  font-style: oblique;
+}
+
+.content {
+  margin: auto;
+  margin: 5% 5%;
+  display: flex;
+  height: 65vh;
+}
+
+.service-info {
+  width: 50%;
+  height: 100%;
+}
+
+.map {
+  position: absolute;
+  margin-left: 50%;
+}
+
+::ng-deep snack-bar-container.alert-green {
+  background-color: #c8e6c9;
+  color: lightslategrey;
+}
+
+::ng-deep snack-bar-container.alert-red {
+  background-color: #ffcdd2;
+  color: lightslategrey;
+}
