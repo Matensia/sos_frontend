@@ -22,6 +22,10 @@
 }
 
 .news-text {
-  text-shadow: 2px 2px 3px #b380ff;
+  text-shadow: 2px 2px 3px #9575cd;
   color: gray;
+}
+
+.carousel-container {
+  background-color: #ede7f6d5;
 }

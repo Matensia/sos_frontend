@@ -54,7 +54,6 @@ export class LoginComponent implements OnInit {
     this.formSign = this.formBuilder.group({
       emailSg: new FormControl(),
       passSg: new FormControl(),
-      rePassSg: new FormControl(),
       nombreSg: new FormControl(),
       apellidoSg: new FormControl(),
       paisSg: new FormControl(),
@@ -93,7 +92,6 @@ export class LoginComponent implements OnInit {
     let reqSign: ISign = <ISign>{
       email: this.formSign.get("emailSg").value,
       pass: this.formSign.get("passSg").value,
-      repass: this.formSign.get("rePassSg").value,
       nombre: this.formSign.get("nombreSg").value,
       apellido: this.formSign.get("apellidoSg").value,
       pais: this.formSign.get("paisSg").value,

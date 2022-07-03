@@ -2,16 +2,24 @@
   <button class="close-dialog" (click)="closeDialog()">
     <mat-icon class="icon-close">close</mat-icon>
   </button>
-</div>
-<br />
-<h5 i18n>Historial de chat</h5>
-<div class="chat">
-  <mat-card *ngFor="let chat of chats; let i = index" class="chat">
-    <p class="chat-info">{{ chat.idServicio }} - {{ chat.idAsistencia }}</p>
-    <div class="container" *ngFor="let dato of chat.dataChat; let i = index">
-      <mat-icon>account_circle</mat-icon>
-      <p>{{ dato.dato }}</p>
-      <span class="time-right">{{ dato.fecha }}</span>
-    </div>
-  </mat-card>
+  <br />
+  <h5 i18n>Historial de chat</h5>
+  <p class="chat-info" *ngFor="let chat of chats; let i = index">
+    {{ chat.idServicio }} - {{ chat.idAsistencia }}
+  </p>
+  <div class="chat">
+    <mat-card *ngFor="let chat of chats; let i = index">
+      <div class="container" *ngFor="let dato of chat.dataChat; let i = index">
+        <mat-icon>account_circle</mat-icon>
+        <ng-container *ngIf="dato.creadoPor == null">
+          <p class="chat-user">tu</p>
+        </ng-container>
+        <ng-container *ngIf="dato.creadoPor != null">
+          <p class="chat-user">{{ dato.creadoPor }}</p>
+        </ng-container>
+        <p class="chat-message">{{ dato.dato }}</p>
+        <span class="time-right">{{ dato.fecha }}</span>
+      </div>
+    </mat-card>
+  </div>
 </div>

@@ -16,6 +16,8 @@ mat-card {
   width: 30%;
   margin: 5% auto;
   border-radius: 8px;
+  overflow: scroll;
+  max-height: 80vh;
 }
 mat-form-field,
 mat-checkbox {
@@ -43,4 +45,12 @@ mat-card-content {
 ::ng-deep snack-bar-container.alert-red {
   background-color: #ffcdd2;
   color: lightslategrey;
+}
+
+.login-card {
+  margin-top: 5%;
+}
+
+.sign-card {
+  margin-top: 5%;
 }

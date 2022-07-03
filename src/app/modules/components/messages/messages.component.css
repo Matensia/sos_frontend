@@ -30,7 +30,7 @@
   float: left;
   max-width: 60px;
   width: 10%;
-  margin-right: 20px;
+  margin-right: 5px;
   border-radius: 50%;
 }
 
@@ -39,7 +39,7 @@
   float: right;
   max-width: 60px;
   width: 10%;
-  margin-right: 20px;
+  margin-right: 5px;
   border-radius: 50%;
 }
 
@@ -78,10 +78,12 @@ button {
 .service_title {
   text-align: center;
   font-size: 20px;
+  margin-left: 5%;
 }
 
 .attendance_title {
   font-size: 15px;
+  margin-bottom: 0%;
 }
 
 .close {
@@ -103,7 +105,15 @@ button {
   right: 10%;
   bottom: 120%;
   overflow: scroll;
-  max-height: 60vh;
+  min-height: 50vh;
+  max-height: 50vh;
+  min-width: 200px;
+  width: 15vw;
+  padding: 10px 0px;
+}
+
+.chat-service-container :hover {
+  background-color: rgba(188, 188, 189, 0.658);
 }
 
 .service-chat-button {
@@ -112,17 +122,19 @@ button {
 
 .chat-service-selected {
   position: absolute;
-  right: 250%;
+  right: 280%;
   bottom: 3%;
   width: 400%;
 }
 
 .chat-message {
   font-size: 15px;
+  margin-bottom: 0px;
 }
 
 .input-message-title {
   font-size: 15px;
+  border-radius: 100%;
 }
 
 .input-message {
@@ -155,9 +167,50 @@ button {
 }
 
 .attendance-selected {
-  background-color: lightslategrey;
+  background-color: lightgray;
 }
 
 .attendance-normal {
-  background-color: none;
+  background-color: white;
+}
+
+.chat-user {
+  font-size: 15px;
+}
+
+.close-dialog {
+  float: right;
+  border: none;
+  background-color: transparent;
+  outline: none;
+  cursor: pointer;
+}
+
+.list-item {
+  font-size: 15px;
+  height: 8vh;
+  cursor: pointer;
+}
+
+.list-item-title {
+  float: left;
+  margin-left: 15%;
+  margin-top: 11%;
+}
+
+.account-icon {
+  font-size: 45px;
+  padding: 5px;
+  opacity: 0.5;
+  float: left;
+  margin-top: 3%;
+}
+
+:host ::ng-deep .list-item-title {
+  padding-right: 6%;
+}
+
+.att-class-title {
+  font-size: 15px;
+  margin-left: 60%;
 }

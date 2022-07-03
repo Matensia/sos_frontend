@@ -236,239 +236,177 @@
         </context-group>
       </trans-unit><trans-unit id="ba7743664aae856baab6591fee99a5bf5cece525" datatype="html">
         <source>Ingrese el codigo de verificación enviado a su casilla de email</source><target state="final">Enter the verification code sent to your email box</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/modules/auth/dialog-sign/dialog-sign.component.html</context>
-          <context context-type="linenumber">2</context>
-        </context-group>
-      </trans-unit><trans-unit id="8770ba3f62747d9ae89af945f4aea9bdd76b2916" datatype="html">
+        
+      <context-group purpose="location"><context context-type="sourcefile">src/app/modules/components/dialog-sign/dialog-sign.component.html</context><context context-type="linenumber">8</context></context-group></trans-unit><trans-unit id="8770ba3f62747d9ae89af945f4aea9bdd76b2916" datatype="html">
         <source>Ingrese código</source><target state="final">Enter code</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/modules/auth/dialog-sign/dialog-sign.component.html</context>
-          <context context-type="linenumber">5</context>
-        </context-group>
-      </trans-unit><trans-unit id="042385d93617ff9e6455ca268fb468fae3e1910e" datatype="html">
+        
+      <context-group purpose="location"><context context-type="sourcefile">src/app/modules/components/dialog-sign/dialog-sign.component.html</context><context context-type="linenumber">12</context></context-group></trans-unit><trans-unit id="042385d93617ff9e6455ca268fb468fae3e1910e" datatype="html">
         <source>Codigo</source><target state="final">Code</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/modules/auth/dialog-sign/dialog-sign.component.html</context>
-          <context context-type="linenumber">10</context>
-        </context-group>
-      </trans-unit><trans-unit id="5785b3685387e2623c39111b0ffd664cc9a3fb93" datatype="html">
+        
+      <context-group purpose="location"><context context-type="sourcefile">src/app/modules/components/dialog-sign/dialog-sign.component.html</context><context context-type="linenumber">17</context></context-group></trans-unit><trans-unit id="5785b3685387e2623c39111b0ffd664cc9a3fb93" datatype="html">
         <source>Validar código</source><target state="final">Validate code</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/modules/auth/dialog-sign/dialog-sign.component.html</context>
-          <context context-type="linenumber">23</context>
-        </context-group>
-      </trans-unit><trans-unit id="3e01e0e11a177f44e96bf0350a044872838d3b7f" datatype="html">
+        
+      <context-group purpose="location"><context context-type="sourcefile">src/app/modules/components/dialog-sign/dialog-sign.component.html</context><context context-type="linenumber">28</context></context-group><context-group purpose="location"><context context-type="sourcefile">src/app/modules/components/login/login.component.html</context><context context-type="linenumber">142</context></context-group></trans-unit><trans-unit id="3e01e0e11a177f44e96bf0350a044872838d3b7f" datatype="html">
         <source>Cuenta inactiva</source><target state="final">Account Inactive</target>
+        
+      <context-group purpose="location"><context context-type="sourcefile">src/app/modules/components/dialog-inactive/dialog-inactive.component.html</context><context context-type="linenumber">6</context></context-group></trans-unit><trans-unit id="70589a37dcdad959540bc4f995bb79446985dd4a" datatype="html">
+        <source>
+  La cuenta se encuentra inactiva debido a que supero la cantidad cancelaciones
+  permitidas
+</source><target state="final">
+  The account is inactive due to exceeding the number of cancellations
+  consent
+</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/modules/auth/dialog-inactive/dialog-inactive.component.html</context>
-          <context context-type="linenumber">6</context>
-        </context-group>
-      </trans-unit><trans-unit id="3a5bc1c90bda18c588c123527dbaac017c9262b7" datatype="html">
-        <source>La cuenta se encuentra inactiva debido a que supero la cantidad cancelaciones permitidas</source><target state="new">The account is inactive because I have exceeded the number of cancellations allowed</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/modules/auth/dialog-inactive/dialog-inactive.component.html</context>
+          <context context-type="sourcefile">src/app/modules/components/dialog-inactive/dialog-inactive.component.html</context>
           <context context-type="linenumber">9</context>
         </context-group>
-      </trans-unit><trans-unit id="dd49dc7b80a5352aaaeb5e63db188c85cfa37e87" datatype="html">
-        <source>Para volver a activar la cuenta debe acercarse a la Central de Policia</source><target state="final">To reactivate the account you must go to the Police Headquarters</target>
+      </trans-unit><trans-unit id="de970cd1954b3b771a9b852392f263162b99e468" datatype="html">
+        <source>
+  Para volver a activar la cuenta debe acercarse a la Central de Policia
+</source><target state="new">
+  To re-activate the account you must go to the Police Headquarters
+</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/modules/auth/dialog-inactive/dialog-inactive.component.html</context>
-          <context context-type="linenumber">11</context>
+          <context context-type="sourcefile">src/app/modules/components/dialog-inactive/dialog-inactive.component.html</context>
+          <context context-type="linenumber">14</context>
         </context-group>
       </trans-unit><trans-unit id="244aae9346da82b0922506c2d2581373a15641cc" datatype="html">
         <source>Email</source><target state="final">E-mail</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/modules/auth/login/login.component.html</context><context context-type="linenumber">12</context></context-group><context-group purpose="location"><context context-type="sourcefile">src/app/modules/auth/login/login.component.html</context><context context-type="linenumber">44</context></context-group></trans-unit><trans-unit id="d058f7772162b95138477a07c47af3ab96469184" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">src/app/modules/components/login/login.component.html</context><context context-type="linenumber">12</context></context-group><context-group purpose="location"><context context-type="sourcefile">src/app/modules/components/login/login.component.html</context><context context-type="linenumber">43</context></context-group></trans-unit><trans-unit id="d058f7772162b95138477a07c47af3ab96469184" datatype="html">
         <source>Clave</source><target state="final">Password</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/modules/auth/login/login.component.html</context><context context-type="linenumber">21</context></context-group><context-group purpose="location"><context context-type="sourcefile">src/app/modules/auth/login/login.component.html</context><context context-type="linenumber">53</context></context-group><context-group purpose="location"><context context-type="sourcefile">src/app/modules/auth/login/login.component.html</context><context context-type="linenumber">65</context></context-group></trans-unit><trans-unit id="1108c392e0015e98d913e45eae42a76d4572b35f" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">src/app/modules/components/login/login.component.html</context><context context-type="linenumber">22</context></context-group><context-group purpose="location"><context context-type="sourcefile">src/app/modules/components/login/login.component.html</context><context context-type="linenumber">53</context></context-group></trans-unit><trans-unit id="1108c392e0015e98d913e45eae42a76d4572b35f" datatype="html">
         <source>Iniciar sessión</source><target state="final">Log in</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/modules/auth/login/login.component.html</context><context context-type="linenumber">33</context></context-group><context-group purpose="location"><context context-type="sourcefile">src/app/modules/auth/login/login.component.html</context><context context-type="linenumber">6</context></context-group></trans-unit><trans-unit id="dd2a11ebc737589080ed400dacc33a8c8c84728b" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">src/app/modules/components/login/login.component.html</context><context context-type="linenumber">32</context></context-group><context-group purpose="location"><context context-type="sourcefile">src/app/modules/components/login/login.component.html</context><context context-type="linenumber">6</context></context-group></trans-unit><trans-unit id="dd2a11ebc737589080ed400dacc33a8c8c84728b" datatype="html">
         <source>Nombre</source><target state="final">Name</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/modules/auth/login/login.component.html</context>
-          <context context-type="linenumber">76</context>
-        </context-group>
-      </trans-unit><trans-unit id="03a7ed186494ae58489a4ece37f682414e742b68" datatype="html">
+        
+      <context-group purpose="location"><context context-type="sourcefile">src/app/modules/components/login/login.component.html</context><context context-type="linenumber">65</context></context-group></trans-unit><trans-unit id="03a7ed186494ae58489a4ece37f682414e742b68" datatype="html">
         <source>Apeliido</source><target state="final">Surname</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/modules/auth/login/login.component.html</context>
-          <context context-type="linenumber">85</context>
-        </context-group>
-      </trans-unit><trans-unit id="6c5e130fcf47e3a190c0b64cffa7b8fe06f8a552" datatype="html">
+        
+      <context-group purpose="location"><context context-type="sourcefile">src/app/modules/components/login/login.component.html</context><context context-type="linenumber">75</context></context-group></trans-unit><trans-unit id="6c5e130fcf47e3a190c0b64cffa7b8fe06f8a552" datatype="html">
         <source>Pais</source><target state="final">Country</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/modules/auth/login/login.component.html</context>
-          <context context-type="linenumber">94</context>
-        </context-group>
-      </trans-unit><trans-unit id="62c18bbff0c75b6b621577ee619bc104119b74e1" datatype="html">
+        
+      <context-group purpose="location"><context context-type="sourcefile">src/app/modules/components/login/login.component.html</context><context context-type="linenumber">85</context></context-group></trans-unit><trans-unit id="62c18bbff0c75b6b621577ee619bc104119b74e1" datatype="html">
         <source>Direccion</source><target state="final">Address</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/modules/auth/login/login.component.html</context>
-          <context context-type="linenumber">103</context>
-        </context-group>
-      </trans-unit><trans-unit id="54f1ab8dba2167f95e5affaec968e315743a9946" datatype="html">
+        
+      <context-group purpose="location"><context context-type="sourcefile">src/app/modules/components/login/login.component.html</context><context context-type="linenumber">95</context></context-group></trans-unit><trans-unit id="54f1ab8dba2167f95e5affaec968e315743a9946" datatype="html">
         <source>Dni</source><target state="final">Id</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/modules/auth/login/login.component.html</context>
-          <context context-type="linenumber">112</context>
-        </context-group>
-      </trans-unit><trans-unit id="c79acfae825abf3755ee1828ead8d0ffa7cda3a4" datatype="html">
+        
+      <context-group purpose="location"><context context-type="sourcefile">src/app/modules/components/login/login.component.html</context><context context-type="linenumber">105</context></context-group></trans-unit><trans-unit id="c79acfae825abf3755ee1828ead8d0ffa7cda3a4" datatype="html">
         <source>Cuil</source><target state="final">Cuil</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/modules/auth/login/login.component.html</context>
-          <context context-type="linenumber">121</context>
-        </context-group>
-      </trans-unit><trans-unit id="7c38873769d52761357ee184abd9925abb88c695" datatype="html">
+        
+      <context-group purpose="location"><context context-type="sourcefile">src/app/modules/components/login/login.component.html</context><context context-type="linenumber">115</context></context-group></trans-unit><trans-unit id="7c38873769d52761357ee184abd9925abb88c695" datatype="html">
         <source>Telefono</source><target state="final">Phone</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/modules/auth/login/login.component.html</context>
-          <context context-type="linenumber">130</context>
-        </context-group>
-      </trans-unit><trans-unit id="55d5c14ef0234d92869512c415172b9c275ee222" datatype="html">
+        
+      <context-group purpose="location"><context context-type="sourcefile">src/app/modules/components/login/login.component.html</context><context context-type="linenumber">125</context></context-group></trans-unit><trans-unit id="55d5c14ef0234d92869512c415172b9c275ee222" datatype="html">
         <source>Crear cuenta</source><target state="final">Create Account</target>
+        
+        
+      <context-group purpose="location"><context context-type="sourcefile">src/app/modules/components/login/login.component.html</context><context context-type="linenumber">133</context></context-group><context-group purpose="location"><context context-type="sourcefile">src/app/modules/components/login/login.component.html</context><context context-type="linenumber">37</context></context-group></trans-unit><trans-unit id="bfc9cdc7d5924e1af9be2d1c19fa27ce1724febe" datatype="html">
+        <source>Historial de chat</source><target state="new">History chat</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/modules/auth/login/login.component.html</context>
-          <context context-type="linenumber">140</context>
+          <context context-type="sourcefile">src/app/modules/components/dialog-history/dialog-history.component.html</context>
+          <context context-type="linenumber">6</context>
         </context-group>
+      </trans-unit><trans-unit id="acd7d84cfd7e3cd00a6aa8ed73389b4df5284f93" datatype="html">
+        <source>Servicios disponibles:</source><target state="new">Available services:</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/modules/auth/login/login.component.html</context>
-          <context context-type="linenumber">38</context>
+          <context context-type="sourcefile">src/app/modules/components/services/services.component.html</context>
+          <context context-type="linenumber">3</context>
         </context-group>
       </trans-unit>
       <trans-unit id="646c3a1dabffc351c35fcae2bf01b1328598e431" datatype="html">
         <source>SOS APP</source><target state="final">SOS APP</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/modules/portal/portal/portal.component.html</context>
-          <context context-type="linenumber">5</context>
-        </context-group>
-      </trans-unit><trans-unit id="da709f6bba85ab5f0cd70548fe404c34a8f15ffd" datatype="html">
+        
+      <context-group purpose="location"><context context-type="sourcefile">src/app/modules/components/toolbar/toolbar.component.html</context><context context-type="linenumber">3</context></context-group></trans-unit><trans-unit id="da709f6bba85ab5f0cd70548fe404c34a8f15ffd" datatype="html">
         <source>Salir</source><target state="final">Logout</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/modules/portal/portal/portal.component.html</context>
-          <context context-type="linenumber">8</context>
-        </context-group>
-      </trans-unit><trans-unit id="45a4b797ab6931fb10ed4ad33c49a77582db3db8" datatype="html">
+        
+      <context-group purpose="location"><context context-type="sourcefile">src/app/modules/components/toolbar/toolbar.component.html</context><context context-type="linenumber">21</context></context-group></trans-unit><trans-unit id="45a4b797ab6931fb10ed4ad33c49a77582db3db8" datatype="html">
         <source>Inicio</source><target state="new">Home</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/modules/portal/portal/portal.component.html</context>
-          <context context-type="linenumber">18</context>
-        </context-group>
-      </trans-unit><trans-unit id="175da93e941ab7b733ced853134c175d65987204" datatype="html">
-        <source>Servicios</source><target state="new">Services</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/modules/portal/portal/portal.component.html</context>
-          <context context-type="linenumber">22</context>
-        </context-group>
-      </trans-unit><trans-unit id="1241db7fa2ad10b0bc2e88b2532f99be839fbeea" datatype="html">
+        
+      <context-group purpose="location"><context context-type="sourcefile">src/app/modules/components/toolbar/toolbar.component.html</context><context context-type="linenumber">13</context></context-group></trans-unit><trans-unit id="1241db7fa2ad10b0bc2e88b2532f99be839fbeea" datatype="html">
         <source>Historico</source><target state="new">Historical</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/modules/portal/portal/portal.component.html</context>
-          <context context-type="linenumber">26</context>
-        </context-group>
-      </trans-unit><trans-unit id="239eeff828264c70b0bdfe5b6c89974ec7dd4922" datatype="html">
-        <source>Chats</source><target state="new">Chats</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/modules/portal/portal/portal.component.html</context>
-          <context context-type="linenumber">30</context>
-        </context-group>
-      </trans-unit><trans-unit id="dbc33bf0650e9a7d36177bf1671f17623520d6f3" datatype="html">
-        <source>Servicios disponibles: </source><target state="final">Available services: </target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/modules/portal/services/services.component.html</context>
-          <context context-type="linenumber">4</context>
-        </context-group>
-      </trans-unit><trans-unit id="978358135fec264b7cd0bba6076e00136c4fdb71" datatype="html">
+        
+      <context-group purpose="location"><context context-type="sourcefile">src/app/modules/components/toolbar/toolbar.component.html</context><context context-type="linenumber">17</context></context-group></trans-unit><trans-unit id="978358135fec264b7cd0bba6076e00136c4fdb71" datatype="html">
         <source>Ingrese servicio</source><target state="final">Enter service</target>
+        
+      <context-group purpose="location"><context context-type="sourcefile">src/app/modules/components/services/services.component.html</context><context context-type="linenumber">5</context></context-group></trans-unit><trans-unit id="dd14c2846ca61b7156e1adfd2f867f8d359af04d" datatype="html">
+        <source><x id="START_TAG_MAT-ICON" ctype="x-mat-icon" equiv-text="&lt;mat-icon>"/>error<x id="CLOSE_TAG_MAT-ICON" ctype="x-mat-icon" equiv-text="&lt;/mat-icon>"/>servicio inabilitado por el
+              momento</source><target state="new"><x id="START_TAG_MAT-ICON" ctype="x-mat-icon" equiv-text="&lt;mat-icon>"/>error<x id="CLOSE_TAG_MAT-ICON" ctype="x-mat-icon" equiv-text="&lt;/mat-icon>"/>service disabled by
+              moment</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/modules/portal/services/services.component.html</context>
-          <context context-type="linenumber">6</context>
+          <context context-type="sourcefile">src/app/modules/components/services/services.component.html</context>
+          <context context-type="linenumber">16</context>
         </context-group>
-      </trans-unit><trans-unit id="c3c7c2d5a2d5d2a12e9d47fa1cd28706affe1274" datatype="html">
-        <source>Datos para el servicio: </source><target state="final">Data for the service: </target>
+      </trans-unit><trans-unit id="ef798f5f7a4c929fabb25c63dd114fe87e5a29e0" datatype="html">
+        <source>Datos para el servicio:</source><target state="new">Data for the service:</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/modules/portal/services/services.component.html</context>
-          <context context-type="linenumber">13</context>
+          <context context-type="sourcefile">src/app/modules/components/services/services.component.html</context>
+          <context context-type="linenumber">26</context>
         </context-group>
       </trans-unit><trans-unit id="38cc40c69774001dcc89ef3492d09f6ed47302e8" datatype="html">
         <source>Mensaje</source><target state="final">Message</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/modules/portal/services/services.component.html</context>
-          <context context-type="linenumber">18</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/modules/portal/messages/messages.component.html</context>
-          <context context-type="linenumber">23</context>
-        </context-group>
-      </trans-unit><trans-unit id="4cc18d74bc1c7de2d50c53d4aea31148eea98063" datatype="html">
+        
+        
+      <context-group purpose="location"><context context-type="sourcefile">src/app/modules/components/services/services.component.html</context><context context-type="linenumber">31</context></context-group><context-group purpose="location"><context context-type="sourcefile">src/app/modules/components/messages/messages.component.html</context><context context-type="linenumber">79</context></context-group></trans-unit><trans-unit id="4cc18d74bc1c7de2d50c53d4aea31148eea98063" datatype="html">
         <source>Solicitar asistencia</source><target state="final">Request assistance</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/modules/portal/services/services.component.html</context>
-          <context context-type="linenumber">22</context>
-        </context-group>
-      </trans-unit><trans-unit id="fc71a5e196af0ec687c599697839ebccc4d8e4ff" datatype="html">
+        
+      <context-group purpose="location"><context context-type="sourcefile">src/app/modules/components/services/services.component.html</context><context context-type="linenumber">41</context></context-group></trans-unit><trans-unit id="fc71a5e196af0ec687c599697839ebccc4d8e4ff" datatype="html">
         <source>Histórico de asistencias:</source><target state="final">Attendance history:</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/modules/portal/historical/historical.component.html</context>
-          <context context-type="linenumber">4</context>
-        </context-group>
-      </trans-unit><trans-unit id="45cc8ca94b5a50842a9a8ef804a5ab089a38ae5c" datatype="html">
+        
+      <context-group purpose="location"><context context-type="sourcefile">src/app/modules/components/historical/historical.component.html</context><context context-type="linenumber">4</context></context-group></trans-unit><trans-unit id="45cc8ca94b5a50842a9a8ef804a5ab089a38ae5c" datatype="html">
         <source>ID</source><target state="final">ID</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/modules/portal/historical/historical.component.html</context>
-          <context context-type="linenumber">9</context>
-        </context-group>
-      </trans-unit><trans-unit id="bca221ff13245ee2187a514e819f9f0bc0ea5fd5" datatype="html">
+        
+      <context-group purpose="location"><context context-type="sourcefile">src/app/modules/components/historical/historical.component.html</context><context context-type="linenumber">9</context></context-group></trans-unit><trans-unit id="bca221ff13245ee2187a514e819f9f0bc0ea5fd5" datatype="html">
         <source>ID_SERVICIO</source><target state="final">SERVICE_ID</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/modules/portal/historical/historical.component.html</context>
-          <context context-type="linenumber">10</context>
-        </context-group>
-      </trans-unit><trans-unit id="7c8855fd6b8065762d487883483435f73588298a" datatype="html">
+        
+      <context-group purpose="location"><context context-type="sourcefile">src/app/modules/components/historical/historical.component.html</context><context context-type="linenumber">10</context></context-group></trans-unit><trans-unit id="7c8855fd6b8065762d487883483435f73588298a" datatype="html">
         <source>ESTADO</source><target state="final">STATUS</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/modules/portal/historical/historical.component.html</context>
-          <context context-type="linenumber">11</context>
-        </context-group>
-      </trans-unit><trans-unit id="f77790620285c923b94ff225318a14a701e79b98" datatype="html">
+        
+      <context-group purpose="location"><context context-type="sourcefile">src/app/modules/components/historical/historical.component.html</context><context context-type="linenumber">11</context></context-group></trans-unit><trans-unit id="f77790620285c923b94ff225318a14a701e79b98" datatype="html">
         <source>FECHA_CREACION</source><target state="final">CREATION_DATE</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/modules/portal/historical/historical.component.html</context>
-          <context context-type="linenumber">12</context>
-        </context-group>
-      </trans-unit><trans-unit id="b49c50e4194845d91dd0e940e3de07842ff93ecc" datatype="html">
+        
+      <context-group purpose="location"><context context-type="sourcefile">src/app/modules/components/historical/historical.component.html</context><context context-type="linenumber">12</context></context-group></trans-unit><trans-unit id="b49c50e4194845d91dd0e940e3de07842ff93ecc" datatype="html">
         <source>FECHA_CANCELACION</source><target state="final">CANCELLATION_DATE</target>
+        
+      <context-group purpose="location"><context context-type="sourcefile">src/app/modules/components/historical/historical.component.html</context><context context-type="linenumber">13</context></context-group></trans-unit><trans-unit id="e17c43c8f4e154e1406a9ecf41b4c02dab4dba1f" datatype="html">
+        <source>VER CHAT</source><target state="final">VIEW CHAT</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/modules/portal/historical/historical.component.html</context>
-          <context context-type="linenumber">13</context>
-        </context-group>
-      </trans-unit><trans-unit id="3786ef5279f1c99f0bf2f3321285bca5aac246fc" datatype="html">
-        <source>MOTIVO_CANCELACION</source><target state="final">REASON_CANCELLATION</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/modules/portal/historical/historical.component.html</context>
+          <context context-type="sourcefile">src/app/modules/components/historical/historical.component.html</context>
           <context context-type="linenumber">14</context>
+        </context-group>
+      </trans-unit><trans-unit id="7939fa6282918756f832bb5dd652c930693f1139" datatype="html">
+        <source>Asistencias</source><target state="final">Attendances</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/modules/components/messages/messages.component.html</context>
+          <context context-type="linenumber">21</context>
+        </context-group>
+      </trans-unit><trans-unit id="520127b6bb1a7077818279691c16eeccf668fb4d" datatype="html">
+        <source>
+      Asistencia: <x id="INTERPOLATION" equiv-text="{{ chatSeleccionado.idAsistencia }}"/>
+    </source><target state="final">
+      Attendance: <x id="INTERPOLATION" equiv-text="{{ chatSeleccionado.idAsistencia }}"/>
+    </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/modules/components/messages/messages.component.html</context>
+          <context context-type="linenumber">57</context>
+        </context-group>
+      </trans-unit><trans-unit id="d7f0515154acb72d302810b93d00bf7f20a230ad" datatype="html">
+        <source>tu</source><target state="final">you</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/modules/components/messages/messages.component.html</context>
+          <context context-type="linenumber">68</context>
         </context-group>
       </trans-unit><trans-unit id="2c7d3ab9d7463cd13821369c376565e189a13198" datatype="html">
         <source>Cancelar asistencia</source><target state="final">Cancel assistance</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/modules/portal/messages/messages.component.html</context>
-          <context context-type="linenumber">6</context>
-        </context-group>
-      </trans-unit><trans-unit id="7c631f6637a9b5b09f5d965957158850c333bf11" datatype="html">
+        
+      <context-group purpose="location"><context context-type="sourcefile">src/app/modules/components/messages/messages.component.html</context><context context-type="linenumber">110</context></context-group></trans-unit><trans-unit id="7c631f6637a9b5b09f5d965957158850c333bf11" datatype="html">
         <source>Inserte mensaje</source><target state="final">insert message</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/modules/portal/messages/messages.component.html</context>
-          <context context-type="linenumber">24</context>
-        </context-group>
-      </trans-unit><trans-unit id="618465519d4cdf9877a5d9ee367b6db725aa8d6f" datatype="html">
-        <source>Example icon button with a delete icon</source><target state="new">Example icon button with a delete icon</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/modules/portal/messages/messages.component.html</context>
-          <context context-type="linenumber">27</context>
-        </context-group>
-      </trans-unit>
+        
+      <context-group purpose="location"><context context-type="sourcefile">src/app/modules/components/messages/messages.component.html</context><context context-type="linenumber">87</context></context-group></trans-unit>
     </body>
   </file>
 </xliff>

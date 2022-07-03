@@ -52,13 +52,16 @@
 
 .chat {
   margin: auto;
-  width: 100%;
   margin-top: 5%;
   margin-bottom: 5%;
+  overflow: scroll;
+  width: 30vw;
+  height: 60vh;
 }
 
 h5 {
   text-align: center;
+  margin-left: 8%;
 }
 
 .chat-info {

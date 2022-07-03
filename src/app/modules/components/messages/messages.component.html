@@ -1,97 +1,60 @@
-<!-- <mat-tab-group>
-  <mat-tab
-    *ngFor="let chat of chats; let i = index"
-    label="{{ chat.idServicio }}"
-  >
-    <mat-card class="chat">
-      <button
-        class="close"
-        (click)="closeChat(chat.idAsistencia)"
-        mat-raised-button
-        i18n-title
-        title="Cancelar asistencia"
-      >
-        <mat-icon class="icon-delete">delete</mat-icon>
-      </button>
-
-      <h5 class="service_title">{{ chat.idServicio }}</h5>
-      <p>Asistencia: {{ chat.idAsistencia }}</p>
-
-      <div class="container" *ngFor="let dato of chat.dataChat; let i = index">
-        <mat-icon>account_circle</mat-icon>
-        <p>{{ dato.dato }}</p>
-        <span class="time-right">{{ dato.fecha }}</span>
-      </div>
-
-      <div>
-        <mat-form-field class="text" appearance="fill">
-          <mat-label i18n>Mensaje</mat-label>
-          <input
-            matInput
-            id="username"
-            name="username"
-            #message
-            maxlength="50"
-            i18n-placeholder
-            placeholder="Inserte mensaje"
-            #username
-          />
-        </mat-form-field>
-
-        <button
-          (click)="sendChat(username.value, chat.idAsistencia)"
-          mat-fab
-          color="primary"
-          i18n-aria-label
-          aria-label="Example icon button with a delete icon"
-        >
-          <mat-icon class="icon-chat">send</mat-icon>
-        </button>
-      </div>
-    </mat-card>
-  </mat-tab>
-</mat-tab-group> -->
-
 <!-- START CHAT ICON BUTTON -->
 
+<!-- FAB Button -->
 <button
-  class="chat-button"
-  (click)="showChatService = !showChatService"
   mat-fab
+  class="chat-button"
   color="primary"
   aria-label="Chat"
-  matBadge="8"
+  matBadge="{{ badgeNewMessages }}"
   matBadgePosition="before"
   matBadgeColor="primary"
-  [matBadgeHidden]="hidden"
+  [matBadgeHidden]="badgeNewMessages === 0"
+  (click)="showChatService = !showChatService"
 >
   <mat-icon>chat</mat-icon>
 </button>
 <!-- END CHAT ICON BUTTON -->
 
 <mat-card class="chat-service-container" *ngIf="showChatService">
+  <mat-card-header>
+    <mat-card-title class="att-class-title" i18n>Asistencias</mat-card-title>
+  </mat-card-header>
+  <mat-divider></mat-divider>
+
+  <!-- Attendances List -->
   <ng-container *ngFor="let chat of chats; let i = index">
-    <button
+    <!-- List Item -->
+    <div
+      class="list-item"
       [ngClass]="
-        !chatSeleccionado ||
-        chatSeleccionado.idAsistencia !== chats[i].idAsistencia
+        !chatSeleccionado || chatSeleccionado.idAsistencia !== chat.idAsistencia
           ? 'attendance-normal'
           : 'attendance-selected'
       "
-      class="service-chat-button"
       (click)="viewChat(chat)"
-      mat-raised-button
-      #{{i}}
     >
-      <span>{{ chat.idServicio }}</span>
-    </button>
+      <mat-icon class="account-icon">account_circle</mat-icon>
+      <p
+        class="list-item-title"
+        matBadge="{{ countNewChats(chat.idAsistencia) }}"
+        matBadgeColor="primary"
+        [matBadgeHidden]="countNewChats(chat.idAsistencia) === 0"
+      >
+        {{ chat.idServicio }}
+      </p>
+    </div>
+    <mat-divider></mat-divider>
   </ng-container>
 </mat-card>
 
 <ng-container *ngIf="chatSeleccionado && showChatService">
   <mat-card class="chat-service-selected">
-    <p class="service_title">{{ chatSeleccionado.idServicio }}</p>
-    <p class="attendance_title">
+    <mat-icon class="close-dialog" (click)="closeChat()">close</mat-icon>
+    <p class="service_title">
+      {{ chatSeleccionado.idServicio }}
+    </p>
+    <p class="attendance_title" i18n>
       Asistencia: {{ chatSeleccionado.idAsistencia }}
     </p>
 
@@ -101,6 +64,12 @@
         *ngFor="let dato of chatSeleccionado.dataChat; let i = index"
       >
         <mat-icon>account_circle</mat-icon>
+        <ng-container *ngIf="dato.creadoPor == null">
+          <p class="chat-user" i18n>tu</p>
+        </ng-container>
+        <ng-container *ngIf="dato.creadoPor != null">
+          <p class="chat-user">{{ dato.creadoPor }}</p>
+        </ng-container>
         <p class="chat-message">{{ dato.dato }}</p>
         <span class="time-right">{{ dato.fecha }}</span>
       </div>
@@ -120,6 +89,7 @@
         class="input-message"
       />
     </mat-form-field>
+
     <button
       (click)="sendChat(username.value, chatSeleccionado.idAsistencia)"
       mat-fab
@@ -137,7 +107,7 @@
       i18n-aria-label
       title="Cancelar asistencia"
     >
-      <span>Cancelar asistencia</span>
+      <span i18n>Cancelar asistencia</span>
     </button>
   </mat-card>
 </ng-container>

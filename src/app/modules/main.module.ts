@@ -43,7 +43,6 @@ import { MessagesComponent } from "./components/messages/messages.component";
 
 @NgModule({
   declarations: [
-    // MainComponent,
     LoginComponent,
     DialogSignComponent,
     DialogInactiveComponent,

@@ -12,7 +12,7 @@ export class ToolbarComponent implements OnInit {
   constructor(private router: Router) {}
 
   ngOnInit() {
-    this.home();
+    // this.home();
   }
 
   public home() {
