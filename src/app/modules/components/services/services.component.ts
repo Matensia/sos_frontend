@@ -6,6 +6,11 @@ import { IService } from "src/app/core/api/models/i-service";
 import { IAsistenciaRequest } from "src/app/core/api/models/i-asistencia-req";
 import { IAsistencia } from "src/app/core/api/models/i-asistencia";
 import { MapsAPILoader } from "@agm/core";
+import { HttpClient } from "@angular/common/http";
+import { Observable } from "rxjs";
+import { PingResourceService } from "src/app/core/api/services/ping-resource.service";
+import { DialogOffServiceComponent } from "../dialog-off-service/dialog-off-service.component";
+import { MatDialog } from "@angular/material";
 
 @Component({
   selector: "app-services",
@@ -20,6 +25,10 @@ export class ServicesComponent implements OnInit {
   asistencia: IAsistencia;
   latitude: number;
   longitude: number;
+  currentInput;
+  reader = new FileReader();
+  fileByteArray = [];
+  objImagen = new Image();
 
   lat = -31.3389031;
   lng = -64.2575066;
@@ -36,7 +45,9 @@ export class ServicesComponent implements OnInit {
   constructor(
     private _service: PortalResourceService,
     private _snackBar: MatSnackBar,
-    private mapsAPILoader: MapsAPILoader
+    private mapsAPILoader: MapsAPILoader,
+    private _servicePing: PingResourceService,
+    public dialog: MatDialog
   ) {}
 
   ngOnInit() {
@@ -90,9 +101,69 @@ export class ServicesComponent implements OnInit {
       });
   }
 
-  public clickService() {
-    this._service.services().then((servicios: IService[]) => {
-      this._servicios = servicios;
-    });
+  public onFileSelected(event) {
+    if (event.target.files.length > 0) {
+      //ASI OBTENEMOS EL FILE
+      //TODO VER COMO MANDARLO AL BACK
+      this.reader.readAsBinaryString(event.target.files[0]);
+    }
+  }
+
+  public validateStatusService(serviceId: string) {
+    let respPing;
+    switch (serviceId) {
+      case "bomberos": {
+        this._servicePing
+          .bomberosPing()
+          .then((ping: Text) => {
+            respPing = ping;
+          })
+          .catch((err) => {
+            this.dialog.open(DialogOffServiceComponent).disableClose = true;
+            this.selectedValue = "";
+          });
+        break;
+      }
+      case "policia": {
+        this._servicePing
+          .policiaPing()
+          .then((ping: Text) => {
+            respPing = ping;
+          })
+          .catch((err) => {
+            this.dialog.open(DialogOffServiceComponent).disableClose = true;
+            this.selectedValue = "";
+          });
+        break;
+      }
+      case "urgencias": {
+        this._servicePing
+          .urgenciasPing()
+          .then((ping: Text) => {
+            respPing = ping;
+          })
+          .catch((err) => {
+            this.dialog.open(DialogOffServiceComponent).disableClose = true;
+            this.selectedValue = "";
+          });
+        break;
+      }
+      case "defensa_civil": {
+        this._servicePing
+          .defensaCivilPing()
+          .then((ping: Text) => {
+            respPing = ping;
+          })
+          .catch((err) => {
+            this.dialog.open(DialogOffServiceComponent).disableClose = true;
+            this.selectedValue = "";
+          });
+        break;
+      }
+      default: {
+        alert("ERROR");
+        break;
+      }
+    }
   }
 }

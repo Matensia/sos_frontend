@@ -10,8 +10,6 @@ import { PortalResourceService } from "src/app/core/api/services/portal-resource
 import { ILogin } from "src/app/core/api/models/i-login";
 import { DialogInactiveComponent } from "../dialog-inactive/dialog-inactive.component";
 import { HttpClient } from "@angular/common/http";
-import { catchError } from "rxjs/operators";
-import { throwError } from "rxjs";
 import { INewChats } from "src/app/core/api/models/i-new-chats";
 
 @Component({
@@ -55,12 +53,11 @@ export class MessagesComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.getAttendences();
-    // this.getChats();
+    // this.getAttendences();
   }
 
   private findNewMessages(chats: IChat[]): void {
-    // First time we only will initialize the local properties
+    // La primera vez solo inicializaremos las propiedades locales.
     if (!this._chats) {
       this._chats = chats;
       this._newMessages = this._chats.map((att) => {
@@ -69,16 +66,16 @@ export class MessagesComponent implements OnInit {
       return;
     }
 
-    // Look for new messages comparing the chats in memory with the new ones
+    // Busca nuevos mensajes comparando los chats en memoria con los nuevos
     let newMsgFound = this._newMessages;
     chats.forEach((att: IChat) => {
       var localAtt = this._chats.find(
         (a) => a.idAsistencia === att.idAsistencia
       );
 
-      // If the attendance does not exist locally, is a new one
+      // Si la asistencia no existe localmente, es una nueva
       if (!localAtt) {
-        // we keep track of it's new messages
+        // Hacemos un seguimiento de sus nuevos mensajes
         newMsgFound.push({
           idAttendence: att.idAsistencia,
           count: att.dataChat.length,
@@ -86,7 +83,7 @@ export class MessagesComponent implements OnInit {
         return;
       }
 
-      // Skip this Attendance if there is no new messages
+      // Omitir esta asistencia si no hay mensajes nuevos
       if (localAtt.dataChat.length === att.dataChat.length) {
         return;
       }
@@ -102,7 +99,7 @@ export class MessagesComponent implements OnInit {
       totalNewMsgFound += n.count;
     });
 
-    // Only change the count badge if there are new messages
+    // Solo cambio el conteo si hay mensajes nuevos
     if (totalNewMsgFound !== this.badgeNewMessages) {
       this.badgeNewMessages = totalNewMsgFound;
       this._chats = chats;
@@ -180,8 +177,8 @@ export class MessagesComponent implements OnInit {
       if (login.habilitado == "N") {
         this.dialog.open(DialogInactiveComponent).disableClose = true;
         this.router.navigate(["/login"]);
+        return;
       }
-
       this.chatSeleccionado = undefined;
     });
   }

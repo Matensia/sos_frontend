@@ -40,6 +40,7 @@ import { PortalComponent } from "./components/portal/portal.component";
 import { ServicesComponent } from "./components/services/services.component";
 import { HistoricalComponent } from "./components/historical/historical.component";
 import { MessagesComponent } from "./components/messages/messages.component";
+import { DialogOffServiceComponent } from "./components/dialog-off-service/dialog-off-service.component";
 
 @NgModule({
   declarations: [
@@ -53,11 +54,13 @@ import { MessagesComponent } from "./components/messages/messages.component";
     HistoricalComponent,
     MessagesComponent,
     ToolbarComponent,
+    DialogOffServiceComponent,
   ],
   entryComponents: [
     DialogSignComponent,
     DialogInactiveComponent,
     DialogHistoryComponent,
+    DialogOffServiceComponent,
   ],
   imports: [
     CommonModule,

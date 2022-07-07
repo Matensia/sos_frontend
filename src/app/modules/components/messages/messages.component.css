@@ -196,6 +196,7 @@ button {
   float: left;
   margin-left: 15%;
   margin-top: 11%;
+  pointer-events: none;
 }
 
 .account-icon {
@@ -204,6 +205,7 @@ button {
   opacity: 0.5;
   float: left;
   margin-top: 3%;
+  pointer-events: none;
 }
 
 :host ::ng-deep .list-item-title {
@@ -212,5 +214,10 @@ button {
 
 .att-class-title {
   font-size: 15px;
-  margin-left: 60%;
+  margin-left: 40%;
+  pointer-events: none;
+}
+
+.card-header {
+  pointer-events: none;
 }

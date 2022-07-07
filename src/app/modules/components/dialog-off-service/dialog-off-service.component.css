@@ -1,0 +1,19 @@
+.close-dialog {
+  float: right;
+  margin-top: -15%;
+  border: none;
+  background-color: transparent;
+  outline: none;
+}
+
+.inactive-title {
+  font-size: 25px;
+  margin-top: 15%;
+  text-align: center;
+}
+
+h3,
+h5,
+h6 {
+  text-align: center;
+}
