@@ -18,8 +18,8 @@
       <td>{{ asistencia.id }}</td>
       <td>{{ asistencia.idServicio }}</td>
       <td>{{ asistencia.estado }}</td>
-      <td>{{ asistencia.fechaCreacion }}</td>
-      <td>{{ asistencia.fechaCancelacion }}</td>
+      <td>{{ asistencia.fechaCreacion | date }}</td>
+      <td>{{ asistencia.fechaCancelacion | date}}</td>
       <td>
         <button
           class="button-detail"
