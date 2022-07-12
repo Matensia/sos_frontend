@@ -26,8 +26,7 @@ export class ServicesComponent implements OnInit {
   latitude: number;
   longitude: number;
   currentInput;
-  reader = new FileReader();
-  fileByteArray = [];
+  fileByteArray: string[] = [];
   objImagen = new Image();
 
   lat = -31.3389031;
@@ -82,6 +81,7 @@ export class ServicesComponent implements OnInit {
       dni: parseInt(sessionStorage.getItem("dni")),
       idServicio: this.selectedValue,
       dato: this.textArea,
+      imagenes: this.fileByteArray      
     };
 
     this._service
@@ -96,17 +96,32 @@ export class ServicesComponent implements OnInit {
 
         this.textArea = "";
         this.selectedValue = "";
+        this.currentInput = "";
+        this.fileByteArray = [];
 
         this.attendanceAdded.emit();
       });
   }
 
   public onFileSelected(event) {
-    if (event.target.files.length > 0) {
-      //ASI OBTENEMOS EL FILE
-      //TODO VER COMO MANDARLO AL BACK
-      this.reader.readAsBinaryString(event.target.files[0]);
-    }
+    let files = event.target.files;
+    if (files.length > 0) {
+      
+      for(var i = 0; i < files.length; i++){
+        let fileReader = new FileReader();
+
+        fileReader.onload = (e: any) => {
+          let image = new Image();
+  
+          image.src = e.target.result;
+          image.onload = rs => {
+            this.fileByteArray.push(e.target.result);
+          };
+        };
+        
+        fileReader.readAsDataURL(files[i]);    
+      };
+    };
   }
 
   public validateStatusService(serviceId: string) {
