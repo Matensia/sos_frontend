@@ -70,7 +70,8 @@
         <ng-container *ngIf="dato.creadoPor != null">
           <p class="chat-user">{{ dato.creadoPor }}</p>
         </ng-container>
-        <p class="chat-message">{{ dato.dato }}</p>
+        <div *ngIf="dato.tipoDato == 'imagen' else elseBlock"><img [src]="dato.dato"></div>
+        <ng-template #elseBlock><p class="chat-message">{{ dato.dato }}</p></ng-template>
         <span class="time-right">{{ dato.fecha }}</span>
       </div>
     </div>

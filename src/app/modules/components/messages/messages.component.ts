@@ -53,7 +53,7 @@ export class MessagesComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    // this.getAttendences();
+    this.getAttendences();
   }
 
   private findNewMessages(chats: IChat[]): void {
