@@ -36,7 +36,7 @@ export class PingResourceService extends Resource {
 
   @ResourceAction({
     pathPrefix: `${environment.apiUrlUrgencias}/api`,
-    path: "/ping",
+    path: "/ping/urgencias",
     method: ResourceRequestMethod.Get,
     responseBodyType: ResourceResponseBodyType.Text,
   })
@@ -44,7 +44,7 @@ export class PingResourceService extends Resource {
 
   @ResourceAction({
     pathPrefix: `${environment.apiUrlDefensaCivil}/api`,
-    path: "/ping",
+    path: "/ping/defensa_civil",
     method: ResourceRequestMethod.Get,
     responseBodyType: ResourceResponseBodyType.Text,
   })

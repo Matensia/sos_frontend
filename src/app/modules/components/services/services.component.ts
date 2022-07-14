@@ -1,16 +1,17 @@
 import { Component, EventEmitter, OnInit, Output } from "@angular/core";
 import { MatSnackBar } from "@angular/material/snack-bar";
+import { MapsAPILoader } from "@agm/core";
+import { MatDialog } from "@angular/material";
 
 import { PortalResourceService } from "src/app/core/api/services/portal-resource.service";
 import { IService } from "src/app/core/api/models/i-service";
 import { IAsistenciaRequest } from "src/app/core/api/models/i-asistencia-req";
 import { IAsistencia } from "src/app/core/api/models/i-asistencia";
-import { MapsAPILoader } from "@agm/core";
-import { HttpClient } from "@angular/common/http";
-import { Observable } from "rxjs";
 import { PingResourceService } from "src/app/core/api/services/ping-resource.service";
 import { DialogOffServiceComponent } from "../dialog-off-service/dialog-off-service.component";
-import { MatDialog } from "@angular/material";
+import { IChat } from "src/app/core/api/models/i-chat";
+import { IChatReq } from "src/app/core/api/models/i-chat-req";
+import { ILogin } from "src/app/core/api/models/i-login";
 
 @Component({
   selector: "app-services",
@@ -29,6 +30,7 @@ export class ServicesComponent implements OnInit {
   reader = new FileReader();
   fileByteArray = [];
   objImagen = new Image();
+  attendances: IAsistencia[];
 
   lat = -31.3389031;
   lng = -64.2575066;
@@ -45,8 +47,8 @@ export class ServicesComponent implements OnInit {
   constructor(
     private _service: PortalResourceService,
     private _snackBar: MatSnackBar,
-    private mapsAPILoader: MapsAPILoader,
     private _servicePing: PingResourceService,
+    private mapsAPILoader: MapsAPILoader,
     public dialog: MatDialog
   ) {}
 
@@ -58,6 +60,8 @@ export class ServicesComponent implements OnInit {
     this.mapsAPILoader.load().then(() => {
       this.setCurrentLocation();
     });
+
+    this.getAttendances();
   }
 
   private setCurrentLocation() {
@@ -97,6 +101,7 @@ export class ServicesComponent implements OnInit {
         this.textArea = "";
         this.selectedValue = "";
 
+        this.getAttendances();
         this.attendanceAdded.emit();
       });
   }
@@ -141,6 +146,11 @@ export class ServicesComponent implements OnInit {
           .urgenciasPing()
           .then((ping: Text) => {
             respPing = ping;
+            if (respPing == "error") {
+              this.dialog.open(DialogOffServiceComponent).disableClose = true;
+              this.selectedValue = "";
+              return;
+            }
           })
           .catch((err) => {
             this.dialog.open(DialogOffServiceComponent).disableClose = true;
@@ -153,6 +163,11 @@ export class ServicesComponent implements OnInit {
           .defensaCivilPing()
           .then((ping: Text) => {
             respPing = ping;
+            if (respPing == "error") {
+              this.dialog.open(DialogOffServiceComponent).disableClose = true;
+              this.selectedValue = "";
+              return;
+            }
           })
           .catch((err) => {
             this.dialog.open(DialogOffServiceComponent).disableClose = true;
@@ -165,5 +180,26 @@ export class ServicesComponent implements OnInit {
         break;
       }
     }
+  }
+
+  public getAttendances() {
+    let reqAtt: IAsistenciaRequest = <IAsistenciaRequest>{
+      dni: parseInt(sessionStorage.getItem("dni")),
+    };
+
+    this._service.asistencias(reqAtt).then((asistencias: IAsistencia[]) => {
+      this.attendances = asistencias;
+    });
+  }
+
+  public existeServicioEnCurso(idServicio: string): boolean {
+    if (this.attendances) {
+      return this.attendances.find(
+        (a) => a.idServicio === idServicio && a.estado === "activo"
+      )
+        ? true
+        : false;
+    }
+    return false;
   }
 }

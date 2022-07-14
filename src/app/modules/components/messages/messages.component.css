@@ -43,6 +43,14 @@
   border-radius: 50%;
 }
 
+.container mat-icon.left {
+  float: left;
+  max-width: 60px;
+  width: 10%;
+  margin-right: 5px;
+  border-radius: 50%;
+}
+
 /* Style time text */
 .time-right {
   float: right;
@@ -122,7 +130,7 @@ button {
 
 .chat-service-selected {
   position: absolute;
-  right: 280%;
+  right: 110%;
   bottom: 3%;
   width: 400%;
 }
@@ -158,6 +166,11 @@ button {
 
 ::ng-deep snack-bar-container.alert-green {
   background-color: #c8e6c9;
+  color: lightslategrey;
+}
+
+::ng-deep snack-bar-container.alert-blue {
+  background-color: lightblue;
   color: lightslategrey;
 }
 

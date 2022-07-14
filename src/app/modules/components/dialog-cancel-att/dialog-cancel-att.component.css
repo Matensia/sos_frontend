@@ -1,0 +1,17 @@
+.volverbtn {
+  background-color: lightgreen;
+}
+
+.cancelarbtn {
+  background-color: lightcoral;
+  margin-left: 9%;
+}
+
+.button-action {
+  text-align: center;
+  padding: 5%;
+}
+
+.chats {
+  text-align: center;
+}

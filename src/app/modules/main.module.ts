@@ -17,6 +17,7 @@ import { MatDividerModule } from "@angular/material/divider";
 import { MatBadgeModule } from "@angular/material/badge";
 import { MatButtonToggleModule } from "@angular/material/button-toggle";
 import { MatSnackBarModule } from "@angular/material/snack-bar";
+import { MatTooltipModule } from "@angular/material/tooltip";
 
 import {
   MatCardModule,
@@ -26,6 +27,7 @@ import {
   MatButtonModule,
   MatCheckboxModule,
   MatIconModule,
+  MatDialogRef,
 } from "@angular/material";
 
 import { ModulesRoutingModule } from "./main-routing.module";
@@ -41,6 +43,7 @@ import { ServicesComponent } from "./components/services/services.component";
 import { HistoricalComponent } from "./components/historical/historical.component";
 import { MessagesComponent } from "./components/messages/messages.component";
 import { DialogOffServiceComponent } from "./components/dialog-off-service/dialog-off-service.component";
+import { DialogCancelAttComponent } from "./components/dialog-cancel-att/dialog-cancel-att.component";
 
 @NgModule({
   declarations: [
@@ -55,12 +58,14 @@ import { DialogOffServiceComponent } from "./components/dialog-off-service/dialo
     MessagesComponent,
     ToolbarComponent,
     DialogOffServiceComponent,
+    DialogCancelAttComponent,
   ],
   entryComponents: [
     DialogSignComponent,
     DialogInactiveComponent,
     DialogHistoryComponent,
     DialogOffServiceComponent,
+    DialogCancelAttComponent,
   ],
   imports: [
     CommonModule,
@@ -91,9 +96,16 @@ import { DialogOffServiceComponent } from "./components/dialog-off-service/dialo
     MatBadgeModule,
     MatButtonToggleModule,
     MatSnackBarModule,
+    MatTooltipModule,
     AgmCoreModule.forRoot({
       apiKey: "AIzaSyAHg4VOwzdcnAOSrCAR7B1cF6sgdR3h318",
     }),
+  ],
+  providers: [
+    {
+      provide: MatDialogRef,
+      useValue: {},
+    },
   ],
   exports: [
     CommonModule,
@@ -122,6 +134,7 @@ import { DialogOffServiceComponent } from "./components/dialog-off-service/dialo
     MatBadgeModule,
     MatButtonToggleModule,
     MatSnackBarModule,
+    MatTooltipModule,
     AgmCoreModule,
   ],
 })
