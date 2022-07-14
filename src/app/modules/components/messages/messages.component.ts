@@ -9,8 +9,8 @@ import { IChatReq } from "src/app/core/api/models/i-chat-req";
 import { PortalResourceService } from "src/app/core/api/services/portal-resource.service";
 import { ILogin } from "src/app/core/api/models/i-login";
 import { DialogInactiveComponent } from "../dialog-inactive/dialog-inactive.component";
-import { HttpClient } from "@angular/common/http";
 import { INewChats } from "src/app/core/api/models/i-new-chats";
+import { DialogCancelAttComponent } from "../dialog-cancel-att/dialog-cancel-att.component";
 
 @Component({
   selector: "app-messages",
@@ -27,6 +27,8 @@ export class MessagesComponent implements OnInit {
   chatSeleccionado: IChat;
   badgeNewMessages = 0;
   showChatService;
+  updateLocalChats = false;
+  cancelAtt = false;
 
   private _chats: IChat[];
   public get chats(): IChat[] {
@@ -48,8 +50,7 @@ export class MessagesComponent implements OnInit {
     private _service: PortalResourceService,
     private router: Router,
     public dialog: MatDialog,
-    private _snackBar: MatSnackBar,
-    private httpClient: HttpClient
+    private _snackBar: MatSnackBar
   ) {}
 
   ngOnInit() {
@@ -75,6 +76,8 @@ export class MessagesComponent implements OnInit {
 
       // Si la asistencia no existe localmente, es una nueva
       if (!localAtt) {
+        this.updateLocalChats = true;
+
         // Hacemos un seguimiento de sus nuevos mensajes
         newMsgFound.push({
           idAttendence: att.idAsistencia,
@@ -99,11 +102,21 @@ export class MessagesComponent implements OnInit {
       totalNewMsgFound += n.count;
     });
 
-    // Solo cambio el conteo si hay mensajes nuevos
+    //Solo cambio el conteo si hay mensajes nuevos
     if (totalNewMsgFound !== this.badgeNewMessages) {
       this.badgeNewMessages = totalNewMsgFound;
-      this._chats = chats;
       this._newMessages = newMsgFound;
+    }
+
+    if (this.updateLocalChats) {
+      this._chats = chats;
+
+      if (this.chatSeleccionado) {
+        this.chatSeleccionado = this._chats.find(
+          (c) => c.idAsistencia === this.chatSeleccionado.idAsistencia
+        );
+      }
+      this.updateLocalChats = false;
     }
   }
 
@@ -132,12 +145,22 @@ export class MessagesComponent implements OnInit {
 
       setTimeout(() => {
         this.getAttendences();
-      }, 6000);
+      }, 1000);
     });
   }
 
-  public countNewChats(idAsistencia: number): number {
-    return this._newMessages.find((c) => c.idAttendence === idAsistencia).count;
+  public countNewChats(idServicio: string): number {
+    if (this._chats) {
+      const asistencia = this._chats.find((c) => c.idServicio === idServicio);
+
+      if (asistencia) {
+        return this._newMessages.find(
+          (c) => c.idAttendence === asistencia.idAsistencia
+        ).count;
+      }
+    }
+
+    return 0;
   }
 
   public sendChat(text: string, asistencia: number) {
@@ -161,6 +184,13 @@ export class MessagesComponent implements OnInit {
   }
 
   public cancelAttendance(asistencia: number) {
+    //ABRIR MODAL DE CONFIRMACION
+
+    // if (!this.cancelAtt) {
+    //   this.dialog.open(DialogCancelAttComponent).disableClose = true;
+    // }
+
+    // if (this.cancelAtt) {
     let reqDelete: IAsistencia = <IAsistencia>{
       id: asistencia,
       idUsuario: parseInt(sessionStorage.getItem("dni")),
@@ -181,14 +211,31 @@ export class MessagesComponent implements OnInit {
       }
       this.chatSeleccionado = undefined;
     });
+    // }
   }
 
-  public viewChat(chat: IChat) {
-    this.chatSeleccionado = chat;
-    this.setNewMsgCount(chat.idAsistencia, 0);
+  public viewChat(idServicio: string) {
+    this.updateLocalChats = true;
+
+    this.chatSeleccionado = this._chats.find(
+      (c) => c.idServicio === idServicio
+    );
+
+    if (this.chatSeleccionado) {
+      this.setNewMsgCount(this.chatSeleccionado.idAsistencia, 0);
+    } else {
+      this._snackBar.open("El servicio no posee asistencias en curso", "", {
+        duration: 3000,
+        panelClass: ["alert-blue"],
+      });
+    }
   }
 
   public closeChat() {
     this.chatSeleccionado = undefined;
+  }
+
+  cancelDesition(e) {
+    alert(e);
   }
 }
