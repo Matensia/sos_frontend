@@ -2,13 +2,18 @@
 <button
   mat-fab
   class="chat-button"
-  color="primary"
+  color="accent"
   aria-label="Chat"
   matTooltip="Urgencias"
   matTooltipPosition="left"
   matBadge="{{ countNewChats('urgencias') }}"
   matBadgePosition="before"
   matBadgeColor="primary"
+  [ngClass]="
+    chatSeleccionado && chatSeleccionado.idServicio === 'urgencias'
+      ? 'chat-button-selected'
+      : 'chat-button'
+  "
   [matBadgeHidden]="countNewChats('urgencias') === 0"
   (click)="viewChat('urgencias')"
 >
@@ -19,7 +24,6 @@
 <!-- FAB Button Bomberos-->
 <button
   mat-fab
-  class="chat-button"
   color="primary"
   aria-label="Chat"
   matTooltip="Bomberos"
@@ -27,6 +31,11 @@
   matBadge="{{ countNewChats('bomberos') }}"
   matBadgePosition="before"
   matBadgeColor="primary"
+  [ngClass]="
+    chatSeleccionado && chatSeleccionado.idServicio === 'bomberos'
+      ? 'chat-button-selected'
+      : 'chat-button'
+  "
   [matBadgeHidden]="countNewChats('bomberos') === 0"
   (click)="viewChat('bomberos')"
 >
@@ -45,6 +54,11 @@
   matBadge="{{ countNewChats('policia') }}"
   matBadgePosition="before"
   matBadgeColor="primary"
+  [ngClass]="
+    chatSeleccionado && chatSeleccionado.idServicio === 'policia'
+      ? 'chat-button-selected'
+      : 'chat-button'
+  "
   [matBadgeHidden]="countNewChats('policia') === 0"
   (click)="viewChat('policia')"
 >
@@ -63,6 +77,11 @@
   matBadge="{{ countNewChats('defensa_civil') }}"
   matBadgePosition="before"
   matBadgeColor="primary"
+  [ngClass]="
+    chatSeleccionado && chatSeleccionado.idServicio === 'defensa_civil'
+      ? 'chat-button-selected'
+      : 'chat-button'
+  "
   [matBadgeHidden]="countNewChats('defensa_civil') === 0"
   (click)="viewChat('defensa_civil')"
 >
@@ -74,6 +93,15 @@
 <ng-container *ngIf="chatSeleccionado">
   <mat-card class="chat-service-selected">
     <mat-icon class="close-dialog" (click)="closeChat()">close</mat-icon>
+    <mat-icon
+      class="material-symbols-outlined"
+      [ngClass]="{
+        'icon-active': isActivatedChat(),
+        'icon-closed': !isActivatedChat()
+      }"
+    >
+      radio_button_checked
+    </mat-icon>
     <p class="service_title">
       {{ chatSeleccionado.idServicio }}
     </p>
@@ -81,16 +109,18 @@
       Asistencia: {{ chatSeleccionado.idAsistencia }}
     </p>
 
-    <div class="chats-container">
+    <div #chatsContainer class="chats-container">
       <div
+        id="{{ 'dato' + i }}"
         class="container"
         *ngFor="let dato of chatSeleccionado.dataChat; let i = index"
+        [ngClass]="!dato.creadoPor ? '' : 'chat-container-assistant'"
       >
         <mat-icon>account_circle</mat-icon>
-        <ng-container *ngIf="dato.creadoPor == null">
+        <ng-container *ngIf="!dato.creadoPor">
           <p class="chat-user" i18n>tu</p>
         </ng-container>
-        <ng-container *ngIf="dato.creadoPor != null">
+        <ng-container *ngIf="dato.creadoPor">
           <p class="chat-user">{{ dato.creadoPor }}</p>
         </ng-container>
         <div *ngIf="dato.tipoDato == 'imagen' else elseBlock"><img [src]="dato.dato"></div>
@@ -102,34 +132,36 @@
     <mat-form-field class="form-input-message" appearance="fill">
       <mat-label class="input-message-title" i18n>Mensaje</mat-label>
       <input
-        matInput
-        id="username"
-        name="username"
         #message
+        matInput
+        name="username"
         maxlength="50"
         i18n-placeholder
         placeholder="Inserte mensaje"
-        #username
         class="input-message"
+        [disabled]="!isActivatedChat()"
+        (keyup.enter)="sendChat(message.value, chatSeleccionado.idAsistencia)"
       />
     </mat-form-field>
 
     <button
-      (click)="sendChat(username.value, chatSeleccionado.idAsistencia)"
       mat-fab
       color="primary"
       i18n-aria-label
       class="send-btn"
+      [disabled]="!isActivatedChat()"
+      (click)="sendChat(message.value, chatSeleccionado.idAsistencia)"
     >
       <mat-icon class="icon-chat">send</mat-icon>
     </button>
 
     <button
       class="close"
-      (click)="cancelAttendance(chatSeleccionado.idAsistencia)"
       mat-raised-button
       i18n-aria-label
       title="Cancelar asistencia"
+      [disabled]="!isActivatedChat()"
+      (click)="cancelAttendance(chatSeleccionado.idAsistencia)"
     >
       <span i18n>Cancelar asistencia</span>
     </button>

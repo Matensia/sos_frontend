@@ -51,7 +51,6 @@ export class HistoricalComponent implements OnInit {
       .chatByAttendance({ attendance: idAsistencia })
       .then((chat: IChat[]) => {
         this._chats = chat;
-        console.log(this._chats);
         this.dialog.open(DialogHistoryComponent, {
           data: this._chats,
         }).disableClose = true;

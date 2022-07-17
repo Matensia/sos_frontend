@@ -5,4 +5,6 @@ export interface IChat {
   idServicio?: string;
   dataChat?: IDataChat[];
   tipoDato?: string;
+  cancelada?: boolean;
+  estado?: string;
 }

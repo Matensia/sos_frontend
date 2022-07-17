@@ -1,5 +1,5 @@
-import { Component, OnInit } from "@angular/core";
-import { MatDialog, MatDialogRef } from "@angular/material";
+import { Component, Inject, OnInit } from "@angular/core";
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from "@angular/material";
 
 @Component({
   selector: "app-dialog-off-service",
@@ -9,7 +9,8 @@ import { MatDialog, MatDialogRef } from "@angular/material";
 export class DialogOffServiceComponent implements OnInit {
   constructor(
     public dialogRef: MatDialogRef<DialogOffServiceComponent>,
-    public dialog: MatDialog
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    dialog: MatDialog
   ) {}
 
   ngOnInit() {}

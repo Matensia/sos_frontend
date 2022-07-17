@@ -27,4 +27,8 @@ export class ToolbarComponent implements OnInit {
     sessionStorage.clear();
     this.router.navigate(["/login"]);
   }
+
+  public template() {
+    this.router.navigate(["main/template"]);
+  }
 }

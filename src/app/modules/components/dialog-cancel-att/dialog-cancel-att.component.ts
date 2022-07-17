@@ -14,13 +14,11 @@ export class DialogCancelAttComponent implements OnInit {
 
   ngOnInit() {}
 
-  public closeDialog() {
-    this._dialogRef.close();
+  public closeDialog(): void {
+    this._dialogRef.close(false);
   }
 
   public cancellAtt() {
-    this.cancel = true;
-    this.event.emit(this.cancel);
-    //VER COMO ENVIAR ESTE DATO AL PADRE
+    this._dialogRef.close(true);
   }
 }
