@@ -78,12 +78,13 @@ export class ServicesComponent implements OnInit {
       });
       return;
     }
-
+    
     let reqAsistencia: IAsistenciaRequest = <IAsistenciaRequest>{
       dni: parseInt(sessionStorage.getItem("dni")),
       idServicio: this.selectedValue,
       dato: this.textArea,
-      imagenes: this.fileByteArray      
+      imagenes: this.fileByteArray,
+      location: JSON.stringify({ latitude : this.latitude, longitude : this.longitude})
     };
 
     this._service
