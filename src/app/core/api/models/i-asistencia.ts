@@ -7,4 +7,5 @@ export interface IAsistencia {
 	fechaCancelacion?: string;
 	motivoCancelacion?: string;
 	dni?: number;
+	imagenes?: string[];
 }
