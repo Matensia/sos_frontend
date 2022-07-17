@@ -8,4 +8,5 @@ export interface IAsistencia {
 	motivoCancelacion?: string;
 	dni?: number;
 	imagenes?: string[];
+	location?: string;
 }
