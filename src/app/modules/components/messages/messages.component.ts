@@ -1,4 +1,11 @@
-import { Component, ElementRef, OnInit, ViewChild } from "@angular/core";
+import {
+  Component,
+  ElementRef,
+  OnInit,
+  QueryList,
+  ViewChild,
+  ViewChildren,
+} from "@angular/core";
 import { Router } from "@angular/router";
 import { MatDialog } from "@angular/material/dialog";
 import { MatSnackBar } from "@angular/material/snack-bar";
@@ -19,6 +26,7 @@ import { DialogCancelAttComponent } from "../dialog-cancel-att/dialog-cancel-att
 })
 export class MessagesComponent implements OnInit {
   @ViewChild("message", null) message: ElementRef;
+  @ViewChildren("chatsContainer") chatsContainer: QueryList<ElementRef>;
 
   hidden = true;
   chat: string;
@@ -28,7 +36,6 @@ export class MessagesComponent implements OnInit {
   badgeNewMessages = 0;
   showChatService;
   updateLocalChats = false;
-  cancelAtt = false;
 
   private _chats: IChat[];
   public get chats(): IChat[] {
@@ -48,16 +55,16 @@ export class MessagesComponent implements OnInit {
 
   constructor(
     private _service: PortalResourceService,
+    private _snackBar: MatSnackBar,
     private router: Router,
-    public dialog: MatDialog,
-    private _snackBar: MatSnackBar
+    public dialog: MatDialog
   ) {}
 
   ngOnInit() {
     this.getAttendences();
   }
 
-  private findNewMessages(chats: IChat[]): void {
+  private findNewMessages(chats: IChat[]) {
     // La primera vez solo inicializaremos las propiedades locales.
     if (!this._chats) {
       this._chats = chats;
@@ -91,10 +98,12 @@ export class MessagesComponent implements OnInit {
         return;
       }
 
-      this.setNewMsgCount(
-        att.idAsistencia,
-        att.dataChat.length - localAtt.dataChat.length
-      );
+      const quantityOfNewMessages =
+        localAtt.dataChat.length === 1 // Si nunca abrió el chat, todos los mensajes son nuevos
+          ? att.dataChat.length
+          : att.dataChat.length - localAtt.dataChat.length;
+
+      this.setNewMsgCount(att.idAsistencia, quantityOfNewMessages);
     });
 
     let totalNewMsgFound = 0;
@@ -129,6 +138,35 @@ export class MessagesComponent implements OnInit {
     });
   }
 
+  private scrollToBottom() {
+    // Usamos un timer por que al momento de ejecutar el scroll aun no se encuentra renderizado el elemento
+    setTimeout(() => {
+      document
+        .getElementById(`dato${this.chatSeleccionado.dataChat.length - 1}`)
+        .scrollIntoView();
+
+      // Reseteamos la cantidad de mensajes nuevos
+      this.setNewMsgCount(this.chatSeleccionado.idAsistencia, 0);
+    }, 1);
+  }
+
+  public isActivatedChat(): boolean {
+    if (
+      !this.chatSeleccionado.cancelada &&
+      this.chatSeleccionado.dataChat.find((d) => d.creadoPor)
+    ) {
+      return true;
+    }
+    return false;
+  }
+
+  public isClosedChat(): boolean {
+    if (!this.chatSeleccionado && this.chatSeleccionado.estado === "cerrada") {
+      return true;
+    }
+    return false;
+  }
+
   public getAttendences() {
     let reqChat: IChatReq = <IChatReq>{
       idUsuario: parseInt(sessionStorage.getItem("dni")),
@@ -137,15 +175,26 @@ export class MessagesComponent implements OnInit {
     this._service.chats(reqChat).then((chats: IChat[]) => {
       this.findNewMessages(chats);
 
-      if (this.chatSeleccionado) {
-        this.chatSeleccionado = this._chats.find(
-          (c) => c.idAsistencia === this.chatSeleccionado.idAsistencia
-        );
-      }
-
       setTimeout(() => {
         this.getAttendences();
-      }, 1000);
+      }, 1500);
+
+      // Actualizamos el chat seleccionado siempre con lo que viene del back
+      if (this.chatSeleccionado && !this.chatSeleccionado.cancelada) {
+        this.setNewMsgCount(this.chatSeleccionado.idAsistencia, 0);
+
+        const remoteChatSel = chats.find(
+          (c) => c.idAsistencia === this.chatSeleccionado.idAsistencia
+        );
+
+        // Si chat seleccionado queda en null, es que la asistencia fue cerrada por el asesor
+        if (!remoteChatSel) {
+          this.chatSeleccionado.cancelada = true;
+          return;
+        }
+
+        this.chatSeleccionado = remoteChatSel;
+      }
     });
   }
 
@@ -173,56 +222,59 @@ export class MessagesComponent implements OnInit {
     };
 
     this._service.chat(reqChat).then((chat: IChat) => {
-      this._snackBar.open("Mensaje enviado", "", {
-        duration: 3000,
-        panelClass: ["alert-green"],
-      });
-
-      this.getAttendences();
       this.message.nativeElement.value = "";
     });
   }
 
   public cancelAttendance(asistencia: number) {
     //ABRIR MODAL DE CONFIRMACION
+    this.dialog
+      .open(DialogCancelAttComponent)
+      .afterClosed()
+      .subscribe((confirmado: Boolean) => {
+        if (!confirmado) {
+          return;
+        }
 
-    // if (!this.cancelAtt) {
-    //   this.dialog.open(DialogCancelAttComponent).disableClose = true;
-    // }
+        this.chatSeleccionado.cancelada = true;
 
-    // if (this.cancelAtt) {
-    let reqDelete: IAsistencia = <IAsistencia>{
-      id: asistencia,
-      idUsuario: parseInt(sessionStorage.getItem("dni")),
-    };
+        let reqDelete: IAsistencia = <IAsistencia>{
+          id: asistencia,
+          idUsuario: parseInt(sessionStorage.getItem("dni")),
+        };
 
-    this._service.delete(reqDelete).then((login: ILogin) => {
-      this._snackBar.open("Asistencia cancelada", "", {
-        duration: 3000,
-        panelClass: ["alert-green"],
+        this._service.delete(reqDelete).then((login: ILogin) => {
+          this._snackBar.open("Asistencia cancelada", "", {
+            duration: 3000,
+            panelClass: ["alert-green"],
+          });
+
+          if (login.habilitado == "N") {
+            this.dialog.open(DialogInactiveComponent).disableClose = true;
+            this.router.navigate(["/login"]);
+            return;
+          }
+        });
       });
-
-      this.getAttendences();
-
-      if (login.habilitado == "N") {
-        this.dialog.open(DialogInactiveComponent).disableClose = true;
-        this.router.navigate(["/login"]);
-        return;
-      }
-      this.chatSeleccionado = undefined;
-    });
-    // }
   }
 
   public viewChat(idServicio: string) {
     this.updateLocalChats = true;
+
+    if (
+      this.chatSeleccionado &&
+      this.chatSeleccionado.idServicio === idServicio
+    ) {
+      this.chatSeleccionado = undefined;
+      return;
+    }
 
     this.chatSeleccionado = this._chats.find(
       (c) => c.idServicio === idServicio
     );
 
     if (this.chatSeleccionado) {
-      this.setNewMsgCount(this.chatSeleccionado.idAsistencia, 0);
+      this.scrollToBottom();
     } else {
       this._snackBar.open("El servicio no posee asistencias en curso", "", {
         duration: 3000,

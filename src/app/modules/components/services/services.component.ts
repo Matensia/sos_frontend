@@ -9,9 +9,6 @@ import { IAsistenciaRequest } from "src/app/core/api/models/i-asistencia-req";
 import { IAsistencia } from "src/app/core/api/models/i-asistencia";
 import { PingResourceService } from "src/app/core/api/services/ping-resource.service";
 import { DialogOffServiceComponent } from "../dialog-off-service/dialog-off-service.component";
-import { IChat } from "src/app/core/api/models/i-chat";
-import { IChatReq } from "src/app/core/api/models/i-chat-req";
-import { ILogin } from "src/app/core/api/models/i-login";
 
 @Component({
   selector: "app-services",
@@ -31,6 +28,7 @@ export class ServicesComponent implements OnInit {
   fileByteArray = [];
   objImagen = new Image();
   attendances: IAsistencia[];
+  info = "sad";
 
   lat = -31.3389031;
   lng = -64.2575066;
@@ -124,7 +122,10 @@ export class ServicesComponent implements OnInit {
             respPing = ping;
           })
           .catch((err) => {
-            this.dialog.open(DialogOffServiceComponent).disableClose = true;
+            this.dialog.open(DialogOffServiceComponent, {
+              data:
+                "Dirección: Colon 123 - Teléfono: 351123213 - Horario: Lunes a Viernes 8:00 a 18:00 hs",
+            }).disableClose = true;
             this.selectedValue = "";
           });
         break;
@@ -136,7 +137,10 @@ export class ServicesComponent implements OnInit {
             respPing = ping;
           })
           .catch((err) => {
-            this.dialog.open(DialogOffServiceComponent).disableClose = true;
+            this.dialog.open(DialogOffServiceComponent, {
+              data:
+                "Dirección: Avellaneda 123 - Teléfono: 351345678 - Horario: Lunes a Viernes 8:00 a 18:00 hs",
+            }).disableClose = true;
             this.selectedValue = "";
           });
         break;
@@ -147,13 +151,19 @@ export class ServicesComponent implements OnInit {
           .then((ping: Text) => {
             respPing = ping;
             if (respPing == "error") {
-              this.dialog.open(DialogOffServiceComponent).disableClose = true;
+              this.dialog.open(DialogOffServiceComponent, {
+                data:
+                  "Dirección: General Paz 123 - Teléfono: 351345678 - Horario: Lunes a Viernes 8:00 a 18:00 hs",
+              }).disableClose = true;
               this.selectedValue = "";
               return;
             }
           })
           .catch((err) => {
-            this.dialog.open(DialogOffServiceComponent).disableClose = true;
+            this.dialog.open(DialogOffServiceComponent, {
+              data:
+                "Dirección: Estrada 123 - Teléfono: 351345678 - Horario: Lunes a Viernes 8:00 a 18:00 hs",
+            }).disableClose = true;
             this.selectedValue = "";
           });
         break;
@@ -164,13 +174,19 @@ export class ServicesComponent implements OnInit {
           .then((ping: Text) => {
             respPing = ping;
             if (respPing == "error") {
-              this.dialog.open(DialogOffServiceComponent).disableClose = true;
+              this.dialog.open(DialogOffServiceComponent, {
+                data:
+                  "Dirección: Crisol 123 - Teléfono: 351345678 - Horario: Lunes a Viernes 8:00 a 18:00 hs",
+              }).disableClose = true;
               this.selectedValue = "";
               return;
             }
           })
           .catch((err) => {
-            this.dialog.open(DialogOffServiceComponent).disableClose = true;
+            this.dialog.open(DialogOffServiceComponent, {
+              data:
+                "Dirección: Crisol 123 - Teléfono: 351345678 - Horario: Lunes a Viernes 8:00 a 18:00 hs",
+            }).disableClose = true;
             this.selectedValue = "";
           });
         break;

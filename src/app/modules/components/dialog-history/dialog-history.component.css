@@ -67,3 +67,7 @@ h5 {
 .chat-info {
   text-align: center;
 }
+
+.chat-container-assistant {
+  background-color: #a38dc94d;
+}

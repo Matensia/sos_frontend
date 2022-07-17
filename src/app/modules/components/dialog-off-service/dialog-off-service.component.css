@@ -1,6 +1,6 @@
 .close-dialog {
   float: right;
-  margin-top: -15%;
+  margin-top: -5%;
   border: none;
   background-color: transparent;
   outline: none;
@@ -8,7 +8,7 @@
 
 .inactive-title {
   font-size: 25px;
-  margin-top: 15%;
+  margin-top: 3%;
   text-align: center;
 }
 

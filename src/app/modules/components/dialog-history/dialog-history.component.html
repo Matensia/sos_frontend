@@ -9,12 +9,16 @@
   </p>
   <div class="chat">
     <mat-card *ngFor="let chat of chats; let i = index">
-      <div class="container" *ngFor="let dato of chat.dataChat; let i = index">
+      <div
+        class="container"
+        *ngFor="let dato of chat.dataChat; let i = index"
+        [ngClass]="!dato.creadoPor ? '' : 'chat-container-assistant'"
+      >
         <mat-icon>account_circle</mat-icon>
-        <ng-container *ngIf="dato.creadoPor == null">
-          <p class="chat-user">tu</p>
+        <ng-container *ngIf="!dato.creadoPor">
+          <p class="chat-user" i18n>tu</p>
         </ng-container>
-        <ng-container *ngIf="dato.creadoPor != null">
+        <ng-container *ngIf="dato.creadoPor">
           <p class="chat-user">{{ dato.creadoPor }}</p>
         </ng-container>
         <p class="chat-message">{{ dato.dato }}</p>

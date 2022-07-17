@@ -12,6 +12,10 @@
   overflow: scroll;
 }
 
+.chat-container-assistant {
+  background-color: #a38dc94d;
+}
+
 /* Darker chat container */
 .darker {
   border-color: #ccc;
@@ -106,6 +110,15 @@ button {
 .chat-button {
   width: 70px;
   height: 70px;
+  color: white;
+  background-color: #673ab7;
+}
+
+.chat-button-selected {
+  width: 70px;
+  height: 70px;
+  color: white;
+  background-color: #8a63ccf3;
 }
 
 .chat-service-container {
@@ -189,6 +202,22 @@ button {
 
 .chat-user {
   font-size: 15px;
+}
+
+.material-symbols-outlined {
+  float: left;
+}
+
+.icon-active {
+  color: green;
+}
+
+.icon-closed {
+  color: red;
+}
+
+.icon-inactive {
+  color: lightgray;
 }
 
 .close-dialog {
