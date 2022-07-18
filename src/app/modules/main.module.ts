@@ -44,6 +44,7 @@ import { HistoricalComponent } from "./components/historical/historical.componen
 import { MessagesComponent } from "./components/messages/messages.component";
 import { DialogOffServiceComponent } from "./components/dialog-off-service/dialog-off-service.component";
 import { DialogCancelAttComponent } from "./components/dialog-cancel-att/dialog-cancel-att.component";
+import { DialogUbicacionComponent } from './components/dialog-ubicacion/dialog-ubicacion.component';
 
 @NgModule({
   declarations: [
@@ -59,6 +60,7 @@ import { DialogCancelAttComponent } from "./components/dialog-cancel-att/dialog-
     ToolbarComponent,
     DialogOffServiceComponent,
     DialogCancelAttComponent,
+    DialogUbicacionComponent,
   ],
   entryComponents: [
     DialogSignComponent,

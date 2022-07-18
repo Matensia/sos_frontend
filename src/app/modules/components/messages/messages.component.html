@@ -123,8 +123,11 @@
         <ng-container *ngIf="dato.creadoPor">
           <p class="chat-user">{{ dato.creadoPor }}</p>
         </ng-container>
-        <div *ngIf="dato.tipoDato == 'imagen' else elseBlock"><img [src]="dato.dato"></div>
-        <ng-template #elseBlock><p class="chat-message">{{ dato.dato }}</p></ng-template>
+        <ng-container  *ngIf="dato.tipoDato == 'imagen' else elseBlock"><img [src]="dato.dato"></ng-container>
+        <ng-template #elseBlock>
+          <ng-container *ngIf="dato.tipoDato == 'ubicacion' else datoBlock"><app-dialog-ubicacion ubicacion="{{dato.dato}}"></app-dialog-ubicacion> </ng-container>
+        </ng-template>
+        <ng-template #datoBlock><p class="chat-message">{{ dato.dato }}</p></ng-template>
         <span class="time-right">{{ dato.fecha }}</span>
       </div>
     </div>
